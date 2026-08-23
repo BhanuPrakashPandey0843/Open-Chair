@@ -1,3 +1,8 @@
+https://www.behance.net/gallery/220779151/Luxury-Salon-Website-Design?tracking_source=search_projects|salon+website+landing+page&l=523
+
+https://www.behance.net/gallery/253930055/Luxury-Unisex-Salon-Website-UIUX-Case-Study?tracking_source=search_projects|salon+website+landing+page&l=742
+
+
 # OPEN CHAIR
 
 ### Premium Barber Studio — Client Website

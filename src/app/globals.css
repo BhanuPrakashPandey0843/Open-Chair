@@ -7,9 +7,19 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-sans);
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-body);
+  --font-heading: var(--font-display);
+  --color-oc-maroon-950: var(--oc-maroon-950);
+  --color-oc-maroon-900: var(--oc-maroon-900);
+  --color-oc-maroon-800: var(--oc-maroon-800);
+  --color-oc-maroon-700: var(--oc-maroon-700);
+  --color-oc-gold-600: var(--oc-gold-600);
+  --color-oc-gold-500: var(--oc-gold-500);
+  --color-oc-gold-300: var(--oc-gold-300);
+  --color-oc-gold-200: var(--oc-gold-200);
+  --color-oc-cream-50: var(--oc-cream-50);
+  --color-oc-ink-900: var(--oc-ink-900);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -49,6 +59,18 @@
 }
 
 :root {
+  /* Open Chair brand palette */
+  --oc-maroon-950: #2a0f14;
+  --oc-maroon-900: #35121a;
+  --oc-maroon-800: #4a1620;
+  --oc-maroon-700: #63212f;
+  --oc-gold-600: #a8823a;
+  --oc-gold-500: #c9a24b;
+  --oc-gold-300: #e7cd8a;
+  --oc-gold-200: #f0dfb0;
+  --oc-cream-50: #fbf6ec;
+  --oc-ink-900: #2b1219;
+
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
