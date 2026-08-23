@@ -1,5 +1,6 @@
 import { Hero } from "@/components/open-chair/Herohome";
 import { About } from "@/components/open-chair/about";
+import { Advantage } from "@/components/open-chair/advantage";
 import { Services } from "@/components/open-chair/our-service";
 import { Gallery } from "@/components/open-chair/Gallery";
 import { Reviews } from "@/components/open-chair/reviews";
@@ -12,6 +13,7 @@ export default function Home() {
       <main className="flex-1">
         <Hero />
         <About />
+        <Advantage />
         <Services />
         <Gallery />
         <Reviews />
