@@ -1,8 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { Clock, MapPin, MessageCircle, Phone } from "lucide-react";
-import { ScallopDivider } from "./scallop-divider";
+import { CalendarCheck, Clock, MapPin, Phone } from "lucide-react";
 
 type ContactItem = {
   icon: typeof MapPin;
@@ -20,13 +19,11 @@ const CONTACT_ITEMS: ContactItem[] = [
   { icon: Clock, label: "Hours", value: "Open Daily · 10AM – 9PM" },
 ];
 
-const WHATSAPP_HREF = "https://wa.me/15193519193";
+const BOOKING_HREF = "https://openchairbarbershopchatham.setmore.com/book";
 
 export function CtaBooking() {
   return (
     <section id="contact" className="relative bg-oc-maroon-800 text-oc-cream-50">
-      <ScallopDivider className="absolute -top-4 left-0 text-oc-maroon-800 sm:-top-5" />
-
       {/* ambient dot texture, echoes woven cape fabric */}
       <div
         aria-hidden="true"
@@ -94,32 +91,32 @@ export function CtaBooking() {
           className="relative mx-auto w-full max-w-sm rounded-3xl bg-oc-cream-50 p-8 text-oc-ink-900 shadow-[0_30px_60px_-20px_rgba(0,0,0,0.45)] sm:p-9"
         >
           <p className="text-xs font-semibold tracking-[0.18em] text-oc-maroon-700 uppercase">
-            Booking via WhatsApp
+            Online Booking
           </p>
 
           <div className="relative mx-auto my-8 flex size-24 items-center justify-center">
             <span className="absolute inset-0 animate-ping rounded-full bg-oc-maroon-700/10 [animation-duration:2.4s]" />
             <span className="absolute inset-3 rounded-full bg-oc-maroon-700/5" />
             <span className="relative flex size-14 items-center justify-center rounded-full bg-oc-maroon-800 text-oc-gold-300 shadow-sm">
-              <MessageCircle className="size-6" strokeWidth={1.75} aria-hidden="true" />
+              <CalendarCheck className="size-6" strokeWidth={1.75} aria-hidden="true" />
             </span>
           </div>
 
           <p className="text-center text-sm leading-relaxed text-oc-ink-900/65">
-            Chat with us directly for instant booking and stylist
-            recommendations tailored to you.
+            Pick a stylist, a time, and a chair — all in a few taps.
+            Instant confirmation, no calls needed.
           </p>
 
           <motion.a
-            href={WHATSAPP_HREF}
+            href={BOOKING_HREF}
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.98 }}
             className="group mt-8 flex h-12 w-full items-center justify-center gap-2 rounded-full bg-oc-maroon-800 px-5 text-sm font-semibold text-oc-cream-50 transition-colors hover:bg-oc-maroon-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-oc-gold-500"
           >
-            <MessageCircle className="size-4" strokeWidth={2} aria-hidden="true" />
-            Book via WhatsApp
+            <CalendarCheck className="size-4" strokeWidth={2} aria-hidden="true" />
+            Book Now
           </motion.a>
         </motion.div>
       </div>

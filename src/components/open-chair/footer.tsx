@@ -478,7 +478,9 @@ export function Footer() {
             </div>
 
             <a
-              href="#contact"
+              href="https://openchairbarbershopchatham.setmore.com/book"
+              target="_blank"
+              rel="noopener noreferrer"
               className="
                 group/cta inline-flex w-fit items-center gap-2
                 rounded-full
@@ -494,7 +496,7 @@ export function Footer() {
                 hover:shadow-[0_10px_35px_rgba(198,161,91,0.08)]
               "
             >
-              Book an Appointment
+              Book Now
 
               <ArrowUpRight
                 className="

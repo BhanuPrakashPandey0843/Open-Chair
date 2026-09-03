@@ -2,52 +2,87 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { ArrowUpRight, X } from "lucide-react";
+import { ArrowUpRight, MapPin, X } from "lucide-react";
+
+import galleryCover from "@/assets/galarya.jpg";
+import aboutMoment from "@/assets/about.jpg";
+import shot1 from "@/assets/IMG_20260903_204142.jpg.jpeg";
+import shot2 from "@/assets/IMG_20260903_204227.jpg.jpeg";
+import shot3 from "@/assets/IMG_20260903_204255.jpg.jpeg";
+import shot4 from "@/assets/IMG_20260903_204336.jpg.jpeg";
+import shot5 from "@/assets/IMG_20260903_204358.jpg.jpeg";
+import shot6 from "@/assets/IMG_20260903_204415.jpg.jpeg";
+
+const MAPS_HREF = "https://maps.app.goo.gl/EbtKfvNmXtoGFZmH9?g_st=ac";
 
 type GalleryItem = {
   src: string;
   alt: string;
   title: string;
   category: string;
-  className?: string;
+  className: string;
 };
 
 /*
-  Replace these paths with your actual gallery images.
+  Real Open Chair photography. Sizes are tuned as a bento grid —
+  one hero tile, a mix of tall/wide supporting tiles, and a
+  "Find Us" tile that links out to Google Maps instead of opening
+  the lightbox.
 */
 const GALLERY_ITEMS: GalleryItem[] = [
   {
-    src: "/images/gallery/spa-treatment.jpg",
-    alt: "Relaxing spa treatment",
-    title: "A Moment to Unwind",
-    category: "Treatments",
+    src: galleryCover.src,
+    alt: "Open Chair barbershop and salon interior",
+    title: "The Chair Room",
+    category: "Our Space",
+    className: "lg:col-span-2 lg:row-span-2",
+  },
+  {
+    src: aboutMoment.src,
+    alt: "A calm moment at Open Chair",
+    title: "Quiet Luxury",
+    category: "Experience",
     className: "lg:col-span-1 lg:row-span-1",
   },
   {
-    src: "/images/gallery/hair-styling.jpg",
-    alt: "Professional hair styling",
+    src: shot1.src,
+    alt: "Open Chair barbershop styling session",
     title: "The Finishing Touch",
     category: "Styling",
     className: "lg:col-span-1 lg:row-span-1",
   },
   {
-    src: "/images/gallery/hero-treatment.jpg",
-    alt: "Premium salon treatment",
-    title: "Quiet Luxury",
-    category: "Experience",
+    src: shot2.src,
+    alt: "Open Chair barbershop craft in motion",
+    title: "Precision at Work",
+    category: "Craft",
     className: "lg:col-span-1 lg:row-span-2",
   },
   {
-    src: "/images/gallery/spa-interior.jpg",
-    alt: "Elegant spa interior",
-    title: "Your Space to Relax",
+    src: shot3.src,
+    alt: "Open Chair barbershop client experience",
+    title: "A Moment to Unwind",
+    category: "Treatments",
+    className: "lg:col-span-1 lg:row-span-1",
+  },
+  {
+    src: shot4.src,
+    alt: "Open Chair barbershop signature look",
+    title: "Signature Looks",
+    category: "Styling",
+    className: "lg:col-span-2 lg:row-span-1",
+  },
+  {
+    src: shot5.src,
+    alt: "Open Chair barbershop details",
+    title: "Details Matter",
     category: "Our Space",
     className: "lg:col-span-1 lg:row-span-1",
   },
   {
-    src: "/images/gallery/spa-table.jpg",
-    alt: "Luxury spa setup",
-    title: "Details Matter",
+    src: shot6.src,
+    alt: "Open Chair barbershop finished result",
+    title: "The Open Chair Standard",
     category: "Experience",
     className: "lg:col-span-1 lg:row-span-1",
   },
@@ -256,7 +291,7 @@ export function Gallery() {
               sm:grid-cols-2
               sm:gap-4
               lg:grid-cols-4
-              lg:auto-rows-[170px]
+              lg:auto-rows-[180px]
               lg:gap-4
           "
           >
@@ -281,7 +316,7 @@ export function Gallery() {
                 }}
                 transition={{
                   duration: 0.7,
-                  delay: index * 0.08,
+                  delay: index * 0.07,
                   ease: [0.22, 1, 0.36, 1],
                 }}
                 whileHover={{
@@ -304,7 +339,7 @@ export function Gallery() {
                   focus-visible:outline-oc-gold-500
                   sm:min-h-[260px]
                   lg:min-h-0
-                  ${item.className ?? ""}
+                  ${item.className}
                 `}
               >
                 {/* Image */}
@@ -453,6 +488,108 @@ export function Gallery() {
                 </div>
               </motion.button>
             ))}
+
+            {/* =================================================
+                FIND US ON GOOGLE MAPS — links out, no lightbox
+            ================================================= */}
+            <motion.a
+              href={MAPS_HREF}
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{
+                opacity: 0,
+                y: 28,
+                scale: 0.985,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+                scale: 1,
+              }}
+              viewport={{
+                once: true,
+                margin: "-70px",
+              }}
+              transition={{
+                duration: 0.7,
+                delay: GALLERY_ITEMS.length * 0.07,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              whileHover={{
+                y: -3,
+              }}
+              className="
+                group/item
+                relative
+                flex
+                min-h-[230px]
+                flex-col
+                items-center
+                justify-center
+                gap-3
+                overflow-hidden
+                rounded-2xl
+                border
+                border-oc-maroon-900/10
+                bg-oc-maroon-900
+                text-center
+                text-oc-cream-50
+                shadow-[0_2px_8px_rgba(42,15,20,0.08)]
+                transition-shadow
+                duration-500
+                hover:shadow-[0_25px_55px_-25px_rgba(42,15,20,0.45)]
+                focus-visible:outline-2
+                focus-visible:outline-offset-4
+                focus-visible:outline-oc-gold-500
+                sm:min-h-[260px]
+                lg:col-span-1
+                lg:row-span-1
+                lg:min-h-0
+              "
+            >
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 opacity-[0.08]"
+                style={{
+                  backgroundImage:
+                    "radial-gradient(circle, var(--oc-gold-300) 1px, transparent 1px)",
+                  backgroundSize: "20px 20px",
+                }}
+              />
+
+              <span
+                className="
+                  relative
+                  flex
+                  size-12
+                  items-center
+                  justify-center
+                  rounded-full
+                  border
+                  border-oc-gold-300/30
+                  bg-oc-gold-300/10
+                  text-oc-gold-200
+                  transition-all
+                  duration-500
+                  group-hover/item:scale-110
+                  group-hover/item:border-oc-gold-300/60
+                "
+              >
+                <MapPin
+                  className="size-5"
+                  strokeWidth={1.5}
+                  aria-hidden="true"
+                />
+              </span>
+
+              <span className="relative font-[family-name:var(--font-display)] text-lg text-white">
+                Find Us
+              </span>
+
+              <span className="relative text-[10px] uppercase tracking-[0.18em] text-oc-gold-200/70">
+                View on Google Maps
+              </span>
+            </motion.a>
           </div>
 
           {/* ===================================================

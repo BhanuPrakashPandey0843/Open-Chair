@@ -72,15 +72,7 @@ const SERVICES: Service[] = [
   },
 ];
 
-const WHATSAPP_NUMBER = "910000000000";
-
-function getWhatsAppHref(service: Service) {
-  const message = encodeURIComponent(
-    `Hello, I would like to book ${service.title}. Please share the available timings.`
-  );
-
-  return `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
-}
+const BOOKING_HREF = "https://openchairbarbershopchatham.setmore.com/book";
 
 export function Services() {
   return (
@@ -503,7 +495,7 @@ export function Services() {
 
                     {/* CTA */}
                     <a
-                      href={getWhatsAppHref(service)}
+                      href={BOOKING_HREF}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="

@@ -12,7 +12,7 @@ const NAV_LINKS = [
   { label: "Reviews", href: "#reviews" },
 ];
 
-const WHATSAPP_HREF = "https://wa.me/15193519193";
+const BOOKING_HREF = "https://openchairbarbershopchatham.setmore.com/book";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -124,7 +124,7 @@ export function Navbar() {
             DESKTOP CTA
         ===================================================== */}
         <motion.a
-          href={WHATSAPP_HREF}
+          href={BOOKING_HREF}
           target="_blank"
           rel="noopener noreferrer"
           whileHover={{ y: -2 }}
@@ -198,7 +198,7 @@ export function Navbar() {
 
             <div className="border-t border-oc-maroon-900/[0.08] px-6 py-5 sm:px-10">
               <a
-                href={WHATSAPP_HREF}
+                href={BOOKING_HREF}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setMobileOpen(false)}

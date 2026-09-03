@@ -267,7 +267,9 @@ export function Hero() {
           >
             {/* Primary CTA */}
             <motion.a
-              href="#contact"
+              href="https://openchairbarbershopchatham.setmore.com/book"
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{
                 y: -2,
               }}
