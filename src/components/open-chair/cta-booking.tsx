@@ -11,12 +11,16 @@ type ContactItem = {
 };
 
 const CONTACT_ITEMS: ContactItem[] = [
-  { icon: MapPin, label: "Address", value: "[Salon Address, City]" },
-  { icon: Phone, label: "Call Us", value: "[+91 00000 00000]" },
-  { icon: Clock, label: "Hours", value: "Tue – Sun · 10AM – 8PM" },
+  {
+    icon: MapPin,
+    label: "Address",
+    value: "56 Grand Ave East, Chatham, ON N7L 1V7",
+  },
+  { icon: Phone, label: "Call Us", value: "+1 519-351-9193" },
+  { icon: Clock, label: "Hours", value: "Open Daily · 10AM – 9PM" },
 ];
 
-const WHATSAPP_HREF = "https://wa.me/910000000000";
+const WHATSAPP_HREF = "https://wa.me/15193519193";
 
 export function CtaBooking() {
   return (

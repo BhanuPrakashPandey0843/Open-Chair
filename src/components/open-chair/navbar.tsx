@@ -12,7 +12,7 @@ const NAV_LINKS = [
   { label: "Reviews", href: "#reviews" },
 ];
 
-const WHATSAPP_HREF = "https://wa.me/910000000000";
+const WHATSAPP_HREF = "https://wa.me/15193519193";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -77,6 +77,19 @@ export function Navbar() {
 
           <span className="font-[family-name:var(--font-display)] text-lg font-medium tracking-[-0.02em] sm:text-xl">
             Open Chair
+            <span
+              className={`
+                block
+                text-[8px]
+                font-semibold
+                uppercase
+                tracking-[0.22em]
+                transition-colors duration-300
+                ${isSolid ? "text-oc-ink-900/45" : "text-white/60"}
+              `}
+            >
+              Barbershop &amp; Salon
+            </span>
           </span>
         </a>
 
@@ -125,7 +138,7 @@ export function Navbar() {
               : "bg-oc-gold-300 text-oc-maroon-900 hover:bg-oc-gold-200"}
           `}
         >
-          Book Appointment
+          BOOK NOW
           <ArrowRight
             className="size-3 transition-transform duration-300 group-hover:translate-x-0.5"
             strokeWidth={1.8}
@@ -191,7 +204,7 @@ export function Navbar() {
                 onClick={() => setMobileOpen(false)}
                 className="flex h-11 w-full items-center justify-center gap-2.5 rounded-full bg-oc-maroon-800 text-[11px] font-semibold uppercase tracking-[0.12em] text-oc-cream-50 transition-colors hover:bg-oc-maroon-700"
               >
-                Book Appointment
+                BOOK NOW
                 <ArrowRight className="size-3" strokeWidth={1.8} aria-hidden="true" />
               </a>
             </div>

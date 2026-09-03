@@ -38,6 +38,27 @@ function FacebookIcon(props: SVGProps<SVGSVGElement>) {
   );
 }
 
+/**
+ * TikTok mark drawn in the same stroke-based, lucide-matching style as
+ * the icons above (lucide-react ships no official brand icon for TikTok).
+ */
+function TikTokIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.75}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...props}
+    >
+      <path d="M15.5 3v10.8a3.7 3.7 0 1 1-3-3.63" />
+      <path d="M15.5 3.4a5.1 5.1 0 0 0 4.5 4.5" />
+    </svg>
+  );
+}
+
 const QUICK_LINKS = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
@@ -58,13 +79,18 @@ const SERVICES = [
 const SOCIALS = [
   {
     label: "Instagram",
-    href: "#",
+    href: "https://www.instagram.com/openchairbarbershop.chatham/",
     icon: InstagramIcon,
   },
   {
     label: "Facebook",
-    href: "#",
+    href: "https://www.facebook.com/people/OpenChair-Barbershop/61591085387122/",
     icon: FacebookIcon,
+  },
+  {
+    label: "TikTok",
+    href: "https://www.tiktok.com/in/about",
+    icon: TikTokIcon,
   },
 ];
 
@@ -226,6 +252,8 @@ export function Footer() {
                 <a
                   key={social.label}
                   href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={social.label}
                   className="
                     group/social relative flex size-9 items-center justify-center
@@ -349,19 +377,21 @@ export function Footer() {
 
             <ul className="mt-6 flex flex-col gap-4 text-[13px] text-white/55">
               <li className="leading-6">
-                [Salon Address, City]
+                56 Grand Ave East
+                <br />
+                Chatham, ON N7L 1V7
               </li>
 
               <li>
                 <a
-                  href="tel:+910000000000"
+                  href="tel:+15193519193"
                   className="
                     group/phone inline-flex items-center gap-2
                     transition-colors duration-300
                     hover:text-[#e5c982]
                   "
                 >
-                  [+91 00000 00000]
+                  +1 519-351-9193
 
                   <ArrowUpRight
                     className="
@@ -378,8 +408,34 @@ export function Footer() {
                 </a>
               </li>
 
+              <li>
+                <a
+                  href="mailto:openchairck@gmail.com"
+                  className="
+                    group/mail inline-flex items-center gap-2
+                    transition-colors duration-300
+                    hover:text-[#e5c982]
+                  "
+                >
+                  openchairck@gmail.com
+
+                  <ArrowUpRight
+                    className="
+                      size-3
+                      opacity-0
+                      -translate-x-1 translate-y-1
+                      transition-all duration-300
+                      group-hover/mail:translate-x-0
+                      group-hover/mail:translate-y-0
+                      group-hover/mail:opacity-100
+                    "
+                    strokeWidth={1.5}
+                  />
+                </a>
+              </li>
+
               <li className="text-white/35">
-                Tue – Sun · 10AM – 8PM
+                Open Daily · 10AM – 9PM
               </li>
             </ul>
           </div>

@@ -164,7 +164,7 @@ export function Hero() {
                 text-oc-gold-200
               "
             >
-              Luxury Wellness · At Home
+              Luxury Wellness · At Home with Open Chair Barbershop &amp; Salon
             </p>
           </motion.div>
 
@@ -200,17 +200,14 @@ export function Hero() {
               xl:text-[74px]
             "
           >
-            Luxury spa
-            <br />
-
             <span className="italic text-oc-gold-200">
-              experience
+              COME IN
             </span>
 
             <br />
 
             <span className="text-white/95">
-              at your home.
+              TO FEEL GOOD!
             </span>
           </motion.h1>
 
@@ -241,9 +238,11 @@ export function Hero() {
               sm:text-sm
             "
           >
-            Transform your living space into a sanctuary of
-            relaxation. We bring certified therapists and premium
-            treatments directly to your doorstep.
+            For grooming is much more than just tending to the
+            skin, and nails, and hair. It is time you spend on
+            yourself to honour who you are. We recognize the
+            value of the trust you place in the Chair, and that
+            is the purpose Open Chair strives to uphold.
           </motion.p>
 
           {/* =====================================================
@@ -296,7 +295,7 @@ export function Hero() {
                 hover:shadow-[0_15px_35px_rgba(0,0,0,0.25)]
               "
             >
-              Book Appointment
+              Book Now
 
               <span
                 className="
@@ -349,7 +348,7 @@ export function Hero() {
                 hover:border-white/50
               "
             >
-              View Services
+              Know More
             </motion.a>
           </motion.div>
 
