@@ -6,12 +6,13 @@ import {
   useReducedMotion,
   useScroll,
   useTransform,
+  type Variants,
 } from "motion/react";
 import { ArrowRight, Sparkles } from "lucide-react";
 
 import aboutImage from "@/assets/about.jpg";
 
-const paragraphContainer = {
+const paragraphContainer: Variants = {
   hidden: {},
   show: {
     transition: {
@@ -21,14 +22,14 @@ const paragraphContainer = {
   },
 };
 
-const paragraphItem = {
+const paragraphItem: Variants = {
   hidden: { opacity: 0, y: 14 },
   show: {
     opacity: 1,
     y: 0,
     transition: {
       duration: 0.6,
-      ease: [0.22, 1, 0.36, 1],
+      ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
     },
   },
 };
