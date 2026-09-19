@@ -5,7 +5,7 @@ import { ArrowDown, ArrowRight, Sparkles } from "lucide-react";
 
 // If your image is inside src/assets, keep this import.
 // If your extension is .png/.webp, change only the extension.
-import backgroundImage from "@/assets/baground.png";
+import backgroundImage from "@/assets/baground.jpg";
 
 export function Hero() {
   return (
@@ -129,45 +129,6 @@ export function Hero() {
 
       <div className="relative mx-auto flex min-h-[720px] w-full max-w-7xl items-center px-6 pb-20 pt-28 sm:min-h-[780px] sm:px-10 sm:pb-24 sm:pt-32 lg:min-h-screen lg:px-10">
         <div className="w-full max-w-[590px]">
-          {/* =====================================================
-              EYEBROW
-          ===================================================== */}
-
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: 15,
-            }}
-            animate={{
-              opacity: 1,
-              y: 0,
-            }}
-            transition={{
-              duration: 0.6,
-              delay: 0.35,
-              ease: [0.22, 1, 0.36, 1],
-            }}
-            className="flex items-center gap-3"
-          >
-            <span className="flex items-center gap-1.5">
-              <span className="size-1.5 rounded-full bg-oc-gold-300" />
-
-              <span className="h-px w-8 bg-oc-gold-300/60" />
-            </span>
-
-            <p
-              className="
-                text-[9px]
-                font-semibold
-                uppercase
-                tracking-[0.28em]
-                text-oc-gold-200
-              "
-            >
-              Luxury Wellness · At Home with Open Chair Barbershop &amp; Salon
-            </p>
-          </motion.div>
-
           {/* =====================================================
               MAIN HEADING
           ===================================================== */}

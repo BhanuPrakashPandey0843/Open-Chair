@@ -1,11 +1,53 @@
 "use client";
 
-import { motion } from "motion/react";
+import { useRef } from "react";
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+} from "motion/react";
 import { ArrowRight, Sparkles } from "lucide-react";
 
 import aboutImage from "@/assets/about.jpg";
 
+const paragraphContainer = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.05,
+    },
+  },
+};
+
+const paragraphItem = {
+  hidden: { opacity: 0, y: 14 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
+
 export function About() {
+  const imageRef = useRef<HTMLDivElement>(null);
+  const shouldReduceMotion = useReducedMotion();
+
+  const { scrollYProgress } = useScroll({
+    target: imageRef,
+    offset: ["start end", "end start"],
+  });
+
+  const imageY = useTransform(
+    scrollYProgress,
+    [0, 1],
+    shouldReduceMotion ? [0, 0] : [28, -28]
+  );
+
   return (
     <section
       id="about"
@@ -15,11 +57,11 @@ export function About() {
         overflow-hidden
         bg-oc-cream-50
         px-6
-        py-24
+        py-20
         text-oc-ink-900
         sm:px-10
-        sm:py-28
-        lg:py-32
+        sm:py-24
+        lg:py-28
       "
     >
       {/* =========================================================
@@ -123,12 +165,14 @@ export function About() {
       </div>
 
       {/* =========================================================
-          CONTENT WRAPPER
+          CONTENT WRAPPER — single centered column, text then image,
+          both sharing the same outer width so nothing bleeds wider
+          on one side than the other
       ========================================================= */}
 
-      <div className="relative mx-auto w-full max-w-7xl">
+      <div className="relative mx-auto flex w-full max-w-6xl flex-col items-center text-center">
         {/* =======================================================
-            TOP — CENTERED HEADING
+            EYEBROW + HEADING
         ======================================================= */}
 
         <motion.div
@@ -148,7 +192,7 @@ export function About() {
             duration: 0.75,
             ease: [0.22, 1, 0.36, 1],
           }}
-          className="mx-auto mb-16 flex max-w-2xl flex-col items-center text-center sm:mb-20"
+          className="flex flex-col items-center"
         >
           {/* Eyebrow */}
           <div className="flex items-center gap-3">
@@ -163,7 +207,7 @@ export function About() {
                 text-oc-gold-600
               "
             >
-              About Us
+              Who We Are
             </p>
 
             <span className="h-px w-7 bg-oc-gold-500/60" />
@@ -174,239 +218,245 @@ export function About() {
             className="
               mt-6
               font-[family-name:var(--font-display)]
-              text-[34px]
+              text-[32px]
               leading-[1.1]
               font-medium
               tracking-[-0.03em]
               text-oc-maroon-900
-              sm:text-[42px]
-              lg:text-5xl
+              sm:text-[38px]
+              lg:text-[44px]
             "
           >
-            Bringing the{" "}
+            In many cultures, salon time is{" "}
             <span className="italic text-oc-maroon-700">
-              sanctuary
+              ME time
             </span>{" "}
-            to your doorstep.
+        .
           </h2>
         </motion.div>
 
         {/* =======================================================
-            GRID — CONTENT + IMAGE
+            COPY — full column width, justified so every line runs
+            edge to edge, staggered reveal on scroll
         ======================================================= */}
 
-        <div
+        <motion.div
+          variants={paragraphContainer}
+          initial="hidden"
+          whileInView="show"
+          viewport={{
+            once: true,
+            margin: "-80px",
+          }}
           className="
-            grid
+            mt-8
             w-full
-            items-center
-            gap-14
-            lg:grid-cols-[0.9fr_1.1fr]
-            lg:gap-20
-            xl:gap-28
+            space-y-4
+            text-justify
+            [text-align-last:left]
+            text-[13.5px]
+            leading-[1.8]
+            text-oc-ink-900/65
+            sm:mt-9
+            sm:text-[15px]
           "
         >
-          {/* =====================================================
-              LEFT — CONTENT
-          ===================================================== */}
+          <motion.p variants={paragraphItem}>
+            You walk in as you are&mdash;tired, rushed, quiet,
+            talkative, carrying whatever the day has put on your
+            shoulders. The people who work on you become the
+            people you speak to, laugh with, vent to, or simply
+            sit beside without saying much. It&rsquo;s a place
+            where your stories and moods are understood without
+            any judgement.{" "}
+            <span className="font-medium text-oc-maroon-800">
+              That is the spirit Open Chair was built from.
+            </span>
+          </motion.p>
 
-          <motion.div
-            initial={{
-              opacity: 0,
-              x: -30,
-            }}
-            whileInView={{
-              opacity: 1,
-              x: 0,
-            }}
-            viewport={{
-              once: true,
-              margin: "-80px",
-            }}
-            transition={{
-              duration: 0.75,
-              ease: [0.22, 1, 0.36, 1],
-            }}
-            className="max-w-xl"
+          <motion.p variants={paragraphItem}>
+            A simple idea: a space where you don&rsquo;t have to
+            plan your life around a haircut. You walk in, take a
+            seat, and know you&rsquo;ll be looked after. No
+            appointment hassles, no number in queues, no
+            confusion, no pressure&mdash;just work done properly
+            for whoever sits down.
+          </motion.p>
+
+          <motion.p variants={paragraphItem}>
+            Some of this comes from lived experience&mdash;the
+            frustration of calling around for an appointment, the
+            surprise of being asked for a clipper number instead
+            of being understood, the feeling of wanting a place
+            that treats grooming as something personal, not
+            procedural. That idea grew into a shop meant for real
+            people who deserve a place that understands them.
+          </motion.p>
+
+          <motion.p variants={paragraphItem}>
+            If you come in with a story, we listen. If you want
+            quiet, we keep the space steady. If you need to talk
+            while we work, we make room for it&mdash;that&rsquo;s
+            the part of the job that matters just as much as the
+            service. We are a space built around people, and a
+            CHAIR that is waiting for you.{" "}
+            <span className="font-medium text-oc-maroon-800">
+              This is Open Chair.
+            </span>
+          </motion.p>
+        </motion.div>
+
+        {/* =======================================================
+            CTA
+        ======================================================= */}
+
+        <motion.a
+          href="#services"
+          whileHover={{
+            y: -2,
+          }}
+          whileTap={{
+            scale: 0.98,
+          }}
+          className="
+            group
+            mt-8
+            inline-flex
+            items-center
+            gap-3
+            text-[10px]
+            font-semibold
+            uppercase
+            tracking-[0.15em]
+            text-oc-maroon-800
+            focus-visible:outline
+            focus-visible:outline-2
+            focus-visible:outline-offset-4
+            focus-visible:outline-oc-gold-500/60
+            sm:mt-9
+          "
+        >
+          <span
+            className="
+              relative
+              pb-1.5
+            "
           >
-            <div
+            Explore Our Services
+
+            <span
               className="
-                space-y-4
-                text-[13px]
-                leading-[1.9]
-                text-oc-ink-900/60
-                sm:text-sm
+                absolute
+                bottom-0
+                left-0
+                h-px
+                w-full
+                origin-left
+                bg-oc-gold-500/60
+                transition-transform
+                duration-500
+                group-hover:scale-x-0
               "
-            >
-              <p>In many cultures, salon time is ME time.</p>
+            />
 
-              <p>
-                You walk in as you are&mdash;tired, rushed, quiet,
-                talkative, carrying whatever the day has put on
-                your shoulders. The people who work on you become
-                the people you speak to, laugh with, vent to, or
-                simply sit beside without saying much. It&rsquo;s a
-                place where your stories and moods are understood
-                without any judgement.
-              </p>
-
-              <p className="text-oc-maroon-800 font-medium">
-                That is the spirit Open Chair was built from.
-              </p>
-
-              <p>
-                A simple idea: a space where you don&rsquo;t have
-                to plan your life around a haircut. You walk in,
-                take a seat, and know you&rsquo;ll be looked
-                after. No appointment hassles, no number in
-                queues, no confusion, no pressure&mdash;just work
-                done properly for whoever sits down.
-              </p>
-
-              <p>
-                Some of this comes from lived experience. The
-                frustration of calling around for an appointment.
-                The surprise of being asked for a clipper number
-                instead of being understood. The feeling of
-                wanting a place that treats grooming as something
-                personal, not procedural. That idea grew into a
-                shop meant for real people that deserves a place
-                that understands them.
-              </p>
-
-              <p>
-                If you come in with a story, we listen. If you
-                want quiet, we keep the space steady. If you need
-                to talk while we work, we make room for it.
-              </p>
-
-              <p>
-                This is the part of the job that matters just as
-                much as the service. We are a space built around
-                people and a CHAIR that is waiting for you!
-              </p>
-
-              <p className="text-oc-maroon-800 font-medium">
-                This is Open Chair.
-              </p>
-            </div>
-
-            {/* =====================================================
-                CTA
-            ===================================================== */}
-
-            <motion.a
-              href="#services"
-              whileHover={{
-                y: -2,
-              }}
-              whileTap={{
-                scale: 0.98,
-              }}
+            <span
               className="
-                group
-                mt-9
-                inline-flex
-                items-center
-                gap-3
-                text-[10px]
-                font-semibold
-                uppercase
-                tracking-[0.15em]
-                text-oc-maroon-800
+                absolute
+                bottom-0
+                left-0
+                h-px
+                w-0
+                bg-oc-maroon-800
+                transition-all
+                duration-500
+                group-hover:w-full
               "
-            >
-              <span
-                className="
-                  relative
-                  pb-1.5
-                "
-              >
-                Explore Our Services
+            />
+          </span>
 
-                <span
-                  className="
-                    absolute
-                    bottom-0
-                    left-0
-                    h-px
-                    w-full
-                    origin-left
-                    bg-oc-gold-500/60
-                    transition-transform
-                    duration-500
-                    group-hover:scale-x-0
-                  "
-                />
+          <span
+            className="
+              flex
+              size-7
+              items-center
+              justify-center
+              rounded-full
+              border
+              border-oc-gold-500/30
+              bg-oc-gold-500/[0.04]
+              transition-all
+              duration-300
+              group-hover:border-oc-gold-500/60
+              group-hover:bg-oc-gold-500/[0.10]
+            "
+          >
+            <ArrowRight
+              className="
+                size-3
+                transition-transform
+                duration-300
+                group-hover:translate-x-0.5
+              "
+              strokeWidth={1.5}
+              aria-hidden="true"
+            />
+          </span>
+        </motion.a>
 
-                <span
-                  className="
-                    absolute
-                    bottom-0
-                    left-0
-                    h-px
-                    w-0
-                    bg-oc-maroon-800
-                    transition-all
-                    duration-500
-                    group-hover:w-full
-                  "
-                />
-              </span>
+        {/* =======================================================
+            DIVIDER — small ornament bridging copy and image
+        ======================================================= */}
 
-              <span
-                className="
-                  flex
-                  size-7
-                  items-center
-                  justify-center
-                  rounded-full
-                  border
-                  border-oc-gold-500/30
-                  bg-oc-gold-500/[0.04]
-                  transition-all
-                  duration-300
-                  group-hover:border-oc-gold-500/60
-                  group-hover:bg-oc-gold-500/[0.10]
-                "
-              >
-                <ArrowRight
-                  className="
-                    size-3
-                    transition-transform
-                    duration-300
-                    group-hover:translate-x-0.5
-                  "
-                  strokeWidth={1.5}
-                  aria-hidden="true"
-                />
-              </span>
-            </motion.a>
-          </motion.div>
+        <motion.div
+          initial={{
+            opacity: 0,
+            scaleX: 0,
+          }}
+          whileInView={{
+            opacity: 1,
+            scaleX: 1,
+          }}
+          viewport={{
+            once: true,
+          }}
+          transition={{
+            duration: 0.6,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+          className="mt-10 mb-10 flex items-center justify-center gap-3 sm:mt-12 sm:mb-12"
+        >
+          <span className="h-px w-10 bg-oc-gold-500/40" />
+          <span className="size-1.5 rounded-full bg-oc-gold-500/70" />
+          <span className="h-px w-10 bg-oc-gold-500/40" />
+        </motion.div>
 
-          {/* =======================================================
-              RIGHT — IMAGE
-          ======================================================= */}
+        {/* =======================================================
+            IMAGE — rectangular, same width as the column above it
+        ======================================================= */}
 
+        <motion.div
+          ref={imageRef}
+          initial={{
+            opacity: 0,
+            scale: 0.96,
+          }}
+          whileInView={{
+            opacity: 1,
+            scale: 1,
+          }}
+          viewport={{
+            once: true,
+            margin: "-100px",
+          }}
+          transition={{
+            duration: 0.8,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+          className="relative w-full"
+        >
           <motion.div
-            initial={{
-              opacity: 0,
-              x: 30,
-            }}
-            whileInView={{
-              opacity: 1,
-              x: 0,
-            }}
-            viewport={{
-              once: true,
-              margin: "-80px",
-            }}
-            transition={{
-              duration: 0.85,
-              delay: 0.1,
-              ease: [0.22, 1, 0.36, 1],
-            }}
-            className="relative mx-auto w-full max-w-[590px] lg:ml-auto"
+            style={{ y: shouldReduceMotion ? 0 : imageY }}
+            className="relative"
           >
             {/* Decorative offset frame */}
             <motion.div
@@ -439,12 +489,11 @@ export function About() {
               className="
                 group/image
                 relative
-                aspect-[0.94/1]
+                aspect-video
                 overflow-hidden
                 rounded-[18px]
                 bg-oc-maroon-900/5
                 shadow-[0_30px_70px_-30px_rgba(42,15,20,0.35)]
-                sm:aspect-[1/0.96]
               "
             >
               {/* Image */}
@@ -470,7 +519,7 @@ export function About() {
                   absolute
                   inset-0
                   bg-gradient-to-t
-                  from-oc-maroon-900/20
+                  from-oc-maroon-900/25
                   via-transparent
                   to-white/5
                 "
@@ -490,6 +539,23 @@ export function About() {
                 "
               />
 
+              {/* Hover ring highlight */}
+              <div
+                aria-hidden="true"
+                className="
+                  pointer-events-none
+                  absolute
+                  inset-0
+                  rounded-[18px]
+                  ring-1
+                  ring-inset
+                  ring-oc-gold-500/0
+                  transition-all
+                  duration-500
+                  group-hover/image:ring-oc-gold-500/40
+                "
+              />
+
               {/* =================================================
                   FLOATING ACCENT BADGE
               ================================================= */}
@@ -501,19 +567,19 @@ export function About() {
                   -left-1
                   z-10
                   flex
-                  min-w-[112px]
+                  min-w-[104px]
                   flex-col
                   rounded-[8px]
                   bg-oc-maroon-800
-                  px-5
-                  py-4
+                  px-4
+                  py-3.5
                   text-white
                   shadow-[0_15px_35px_-12px_rgba(42,15,20,0.45)]
                   sm:-bottom-2
                   sm:-left-2
-                  sm:min-w-[125px]
-                  sm:px-6
-                  sm:py-5
+                  sm:min-w-[118px]
+                  sm:px-5
+                  sm:py-4
                 "
                 animate={{
                   y: [0, -4, 0],
@@ -525,7 +591,7 @@ export function About() {
                 }}
               >
                 <Sparkles
-                  className="mb-2 size-3 text-oc-gold-300"
+                  className="mb-1.5 size-3 text-oc-gold-300"
                   strokeWidth={1.5}
                   aria-hidden="true"
                 />
@@ -544,21 +610,57 @@ export function About() {
                 </span>
               </motion.div>
 
-              {/* Corner highlight */}
-              <span
-                aria-hidden="true"
+              {/* Caption chip */}
+              <motion.div
+                initial={{
+                  opacity: 0,
+                  y: -8,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                viewport={{
+                  once: true,
+                }}
+                transition={{
+                  duration: 0.6,
+                  delay: 0.4,
+                }}
                 className="
                   absolute
                   right-4
                   top-4
-                  size-5
-                  rounded-tr-md
-                  border-r
-                  border-t
-                  border-white/40
+                  z-10
+                  hidden
+                  items-center
+                  gap-2
+                  rounded-full
+                  border
+                  border-white/30
+                  bg-black/15
+                  px-3
+                  py-1.5
+                  backdrop-blur-md
+                  sm:flex
                 "
-              />
+              >
+                <span className="size-1.5 rounded-full bg-oc-gold-300" />
 
+                <span
+                  className="
+                    text-[8px]
+                    font-semibold
+                    uppercase
+                    tracking-[0.16em]
+                    text-white
+                  "
+                >
+                  Luxury &middot; Wellness &middot; You
+                </span>
+              </motion.div>
+
+              {/* Corner highlight */}
               <span
                 aria-hidden="true"
                 className="
@@ -573,55 +675,8 @@ export function About() {
                 "
               />
             </div>
-
-            {/* Small decorative label */}
-            <motion.div
-              initial={{
-                opacity: 0,
-              }}
-              whileInView={{
-                opacity: 1,
-              }}
-              viewport={{
-                once: true,
-              }}
-              transition={{
-                duration: 0.6,
-                delay: 0.7,
-              }}
-              className="
-                absolute
-                -right-2
-                bottom-8
-                hidden
-                items-center
-                gap-2
-                rounded-full
-                border
-                border-white/30
-                bg-black/10
-                px-3
-                py-2
-                backdrop-blur-md
-                sm:flex
-              "
-            >
-              <span className="size-1.5 rounded-full bg-oc-gold-300" />
-
-              <span
-                className="
-                  text-[8px]
-                  font-semibold
-                  uppercase
-                  tracking-[0.16em]
-                  text-white
-                "
-              >
-                Luxury &middot; Wellness &middot; You
-              </span>
-            </motion.div>
           </motion.div>
-        </div>
+        </motion.div>
       </div>
 
       {/* =========================================================
@@ -647,7 +702,7 @@ export function About() {
         className="
           relative
           mx-auto
-          mt-20
+          mt-16
           h-px
           max-w-5xl
           bg-gradient-to-r

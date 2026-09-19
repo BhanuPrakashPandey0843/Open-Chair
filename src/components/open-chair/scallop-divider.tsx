@@ -5,10 +5,7 @@ type ScallopDividerProps = {
   flip?: boolean;
 };
 
-/**
- * A repeating scalloped edge, like the trimmed hem of a salon cape.
- * Sits at the seam between two sections as a quiet brand signature.
- */
+
 export function ScallopDivider({ className, flip = false }: ScallopDividerProps) {
   // 12 evenly spaced bumps across a 240-wide viewBox.
   const scallops = Array.from({ length: 12 }, (_, i) => 10 + i * 20);

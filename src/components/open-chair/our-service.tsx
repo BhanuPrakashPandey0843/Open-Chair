@@ -1,80 +1,176 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "motion/react";
 import {
   ArrowUpRight,
   Check,
   Crown,
-  Droplets,
-  Heart,
+  Flame,
+  Phone,
+  Scissors,
   Sparkles,
-  Waves,
 } from "lucide-react";
 
-type Service = {
+import aboutMoment from "@/assets/about.jpg";
+import shot1 from "@/assets/IMG_20260903_204142.jpg.jpeg";
+import shot2 from "@/assets/IMG_20260903_204227.jpg.jpeg";
+import shot4 from "@/assets/IMG_20260903_204336.jpg.jpeg";
+
+/* =============================================================
+   REAL MENU DATA — sourced from the printed Barbershop / Salon
+   service cards. Keep in sync if pricing changes in-shop.
+============================================================= */
+
+type FeaturedService = {
   title: string;
   description: string;
   price: string;
   image: string;
   icon: typeof Sparkles;
+  tag: "Barbershop" | "Salon";
   featured?: boolean;
 };
 
-const SERVICES: Service[] = [
+const FEATURED_SERVICES: FeaturedService[] = [
   {
-    title: "Home Massage Therapy",
+    title: "Haircut & Beard",
     description:
-      "Melt away tension with our expert full-body massage therapy, tailored to your comfort and needs.",
-    price: "196",
-    image: "/images/services/home-massage.jpg",
-    icon: Waves,
+      "A clean cut paired with a sharp beard shape-up — the classic Open Chair combo.",
+    price: "40",
+    image: shot2.src,
+    icon: Scissors,
+    tag: "Barbershop",
   },
   {
-    title: "Facial Treatments",
+    title: "Hot Towel, Haircut & Shave",
     description:
-      "Revitalize your skin with our customized facial treatments using premium organic products.",
-    price: "137",
-    image: "/images/services/facial-treatments.jpg",
-    icon: Sparkles,
-  },
-  {
-    title: "Deep Skin Cleansing",
-    description:
-      "Purify and refresh with our deep cleansing rituals that leave your skin glowing and renewed.",
-    price: "156",
-    image: "/images/services/deep-cleansing.jpg",
-    icon: Droplets,
-  },
-  {
-    title: "Body Spa",
-    description:
-      "Indulge in a full-body spa experience with exfoliation, wraps, and hydration treatments.",
-    price: "154",
-    image: "/images/services/body-spa.jpg",
-    icon: Heart,
-  },
-  {
-    title: "Relaxation Sessions",
-    description:
-      "Unwind with our holistic relaxation sessions that combine aromatherapy and gentle techniques.",
-    price: "160",
-    image: "/images/services/relaxation.jpg",
-    icon: Sparkles,
+      "The full ritual: precision haircut, straight-razor shave, and a hot towel finish.",
+    price: "45",
+    image: shot1.src,
+    icon: Flame,
+    tag: "Barbershop",
     featured: true,
   },
   {
-    title: "Bridal Home Packages",
+    title: "Full Colour, Cut & Style",
     description:
-      "Purify and refresh with our deep cleansing rituals that leave your skin glowing and renewed.",
-    price: "306",
-    image: "/images/services/bridal-package.jpg",
+      "Rich, all-over colour finished with a cut and blowout styled to you.",
+    price: "145",
+    image: shot4.src,
+    icon: Sparkles,
+    tag: "Salon",
+  },
+  {
+    title: "Premium Service",
+    description:
+      "Our top-tier barbershop package — cut, shave, and head massage in one seat.",
+    price: "60",
+    image: aboutMoment.src,
     icon: Crown,
+    tag: "Barbershop",
+  },
+];
+
+type PriceItem = {
+  name: string;
+  price?: string;
+  from?: boolean;
+};
+
+type PriceGroup = {
+  title?: string;
+  items: PriceItem[];
+};
+
+const BARBERSHOP_GROUPS: PriceGroup[] = [
+  {
+    items: [
+      { name: "Haircut", price: "25" },
+      { name: "Zero Fade", price: "30" },
+      { name: "Kids Haircut (12 and Under)", price: "20" },
+      { name: "Senior Cut (60+)", price: "20" },
+      { name: "Beard Trim", price: "20" },
+      { name: "Haircut & Beard", price: "40" },
+      { name: "Hot Towel Shave", price: "20" },
+      { name: "Hot Towel, Haircut & Shave", price: "45" },
+      { name: "Facial", price: "35" },
+      { name: "Haircut & Facial", price: "50" },
+      { name: "Head Massage (10 min)", price: "20" },
+      { name: "Haircut & Head Massage", price: "40" },
+      { name: "Head Shave", price: "30" },
+      { name: "Head Shave & Beard Trim", price: "40" },
+      { name: "Premium Service", price: "60" },
+      { name: "Add Head Massage to Any Service (10 min)", price: "15" },
+    ],
+  },
+];
+
+const SALON_GROUPS: PriceGroup[] = [
+  {
+    title: "Women's Cut",
+    items: [
+      { name: "Short Hair", price: "39" },
+      { name: "Long Hair", price: "49" },
+    ],
+  },
+  {
+    title: "Women's Wash & Style",
+    items: [
+      { name: "Short Hair", price: "29" },
+      { name: "Long Hair", price: "39" },
+    ],
+  },
+  {
+    title: "Colour & Highlight Packages",
+    items: [
+      { name: "Roots + Highlights & Style", price: "150", from: true },
+      { name: "Roots + Highlights, Cut & Style", price: "165", from: true },
+      { name: "Full Colour + Highlights & Style", price: "165", from: true },
+      {
+        name: "Full Colour + Highlights, Cut & Style",
+        price: "180",
+        from: true,
+      },
+    ],
+  },
+  {
+    title: "Colour Services",
+    items: [
+      { name: "Root Touch-Up & Style", price: "100" },
+      { name: "Root Touch-Up, Cut & Style", price: "115" },
+      { name: "Full Colour & Style", price: "130" },
+      { name: "Full Colour, Cut & Style", price: "145" },
+    ],
+  },
+  {
+    title: "Highlight Services",
+    items: [
+      { name: "½ Highlights & Style", price: "135", from: true },
+      { name: "½ Highlights, Cut & Style", price: "150", from: true },
+      { name: "Full Highlights & Style", price: "165", from: true },
+      { name: "Full Highlights, Cut & Style", price: "180", from: true },
+    ],
+  },
+  {
+    title: "Specialty Services",
+    items: [
+      { name: "Mini Foil Service & Style", price: "99" },
+      { name: "Face Framing (up to 10 foils)" },
+    ],
   },
 ];
 
 const BOOKING_HREF = "https://openchairbarbershopchatham.setmore.com/book";
+const PHONE_HREF = "tel:+15193519193";
+const PHONE_DISPLAY = "519-351-9193";
+
+type Tab = "barbershop" | "salon";
 
 export function Services() {
+  const [activeTab, setActiveTab] = useState<Tab>("barbershop");
+  const groups = activeTab === "barbershop" ? BARBERSHOP_GROUPS : SALON_GROUPS;
+
   return (
     <section
       id="services"
@@ -234,9 +330,8 @@ export function Services() {
           </h2>
 
           <p className="mt-4 max-w-lg text-[13px] leading-6 text-oc-ink-900/50 sm:text-sm">
-            Thoughtfully designed treatments and rituals, created to
-            make every visit feel effortless, personal, and worth
-            slowing down for.
+            Barbershop precision and salon craft, under one roof —
+            every price, plainly stated, no surprises in the chair.
           </p>
         </motion.div>
 
@@ -273,10 +368,10 @@ export function Services() {
         </motion.div>
 
         {/* =======================================================
-            SERVICE GRID
+            FEATURED SERVICES
         ======================================================= */}
-        <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
-          {SERVICES.map((service, index) => {
+        <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+          {FEATURED_SERVICES.map((service, index) => {
             const Icon = service.icon;
 
             return (
@@ -322,7 +417,7 @@ export function Services() {
                 {/* =================================================
                     IMAGE
                 ================================================= */}
-                <div className="relative aspect-[1.58/1] overflow-hidden">
+                <div className="relative aspect-[1.1/1] overflow-hidden">
                   <img
                     src={service.image}
                     alt={service.title}
@@ -390,7 +485,7 @@ export function Services() {
                     <span className="size-1.5 rounded-full bg-oc-gold-300" />
 
                     <span className="text-[8px] font-semibold uppercase tracking-[0.18em] text-white/85">
-                      Signature
+                      {service.tag}
                     </span>
                   </div>
 
@@ -454,12 +549,12 @@ export function Services() {
                 {/* =================================================
                     CONTENT
                 ================================================= */}
-                <div className="relative flex flex-col p-5 sm:p-6">
+                <div className="relative flex flex-col p-5">
                   {/* Title */}
                   <h3
                     className="
                       font-[family-name:var(--font-display)]
-                      text-[20px]
+                      text-[18px]
                       leading-tight
                       font-medium
                       tracking-[-0.015em]
@@ -470,12 +565,12 @@ export function Services() {
                   </h3>
 
                   {/* Description */}
-                  <p className="mt-2.5 min-h-[50px] text-[12px] leading-[1.7] text-oc-ink-900/50">
+                  <p className="mt-2.5 min-h-[55px] text-[12px] leading-[1.7] text-oc-ink-900/50">
                     {service.description}
                   </p>
 
                   {/* Bottom */}
-                  <div className="mt-5 flex items-end justify-between border-t border-oc-ink-900/[0.07] pt-4">
+                  <div className="mt-4 flex items-end justify-between border-t border-oc-ink-900/[0.07] pt-4">
                     {/* Price */}
                     <div className="flex flex-col">
                       <span className="text-[8px] font-medium uppercase tracking-[0.16em] text-oc-ink-900/35">
@@ -484,7 +579,7 @@ export function Services() {
 
                       <div className="mt-0.5 flex items-baseline gap-1">
                         <span className="text-[10px] font-medium text-oc-maroon-800">
-                          ₹
+                          $
                         </span>
 
                         <span className="font-[family-name:var(--font-display)] text-lg font-medium text-oc-maroon-800">
@@ -503,18 +598,18 @@ export function Services() {
                         relative
                         flex
                         items-center
-                        gap-2
+                        gap-1.5
                         overflow-hidden
                         rounded-full
                         border
                         border-oc-gold-500/30
                         bg-oc-gold-500/[0.045]
-                        px-3.5
+                        px-3
                         py-2
                         text-[9px]
                         font-semibold
                         uppercase
-                        tracking-[0.12em]
+                        tracking-[0.1em]
                         text-oc-maroon-800
                         transition-all
                         duration-300
@@ -543,7 +638,7 @@ export function Services() {
                       />
 
                       <span className="relative">
-                        Book Now
+                        Book
                       </span>
 
                       <ArrowUpRight
@@ -593,6 +688,251 @@ export function Services() {
             );
           })}
         </div>
+
+        {/* =======================================================
+            TAB SWITCHER — Barbershop / Salon full price list
+        ======================================================= */}
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 20,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+            margin: "-60px",
+          }}
+          transition={{
+            duration: 0.6,
+          }}
+          className="mt-20 flex flex-col items-center"
+        >
+          <div
+            className="
+              inline-flex
+              items-center
+              gap-1
+              rounded-full
+              border
+              border-oc-maroon-900/10
+              bg-white/70
+              p-1.5
+              shadow-[0_3px_12px_rgba(42,15,20,0.04)]
+              backdrop-blur-sm
+            "
+          >
+            {(["barbershop", "salon"] as const).map((tab) => (
+              <button
+                key={tab}
+                type="button"
+                onClick={() => setActiveTab(tab)}
+                className={`
+                  relative
+                  rounded-full
+                  px-5
+                  py-2.5
+                  text-[11px]
+                  font-semibold
+                  uppercase
+                  tracking-[0.14em]
+                  transition-colors
+                  duration-300
+                  ${
+                    activeTab === tab
+                      ? "bg-oc-maroon-800 text-oc-cream-50"
+                      : "text-oc-ink-900/50 hover:text-oc-ink-900/80"
+                  }
+                `}
+              >
+                {tab === "barbershop" ? "Barbershop" : "Salon"}
+              </button>
+            ))}
+          </div>
+
+          <h3 className="mt-8 font-[family-name:var(--font-display)] text-2xl font-medium text-oc-ink-900 sm:text-3xl">
+            {activeTab === "barbershop" ? "Barbershop Services" : "Salon Services"}
+          </h3>
+        </motion.div>
+
+        {/* =======================================================
+            PRICE LIST
+        ======================================================= */}
+        <div className="mx-auto mt-10 grid max-w-5xl grid-cols-1 gap-5 sm:grid-cols-2">
+          {groups.map((group, groupIndex) => (
+            <motion.div
+              key={`${activeTab}-${group.title ?? "list"}`}
+              initial={{
+                opacity: 0,
+                y: 20,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              viewport={{
+                once: true,
+                margin: "-60px",
+              }}
+              transition={{
+                duration: 0.55,
+                delay: groupIndex * 0.07,
+              }}
+              className={`
+                rounded-[20px]
+                border
+                border-oc-maroon-900/[0.08]
+                bg-white/80
+                p-6
+                shadow-[0_3px_12px_rgba(42,15,20,0.035)]
+                backdrop-blur-sm
+                ${groups.length === 1 ? "sm:col-span-2" : ""}
+              `}
+            >
+              {group.title && (
+                <div
+                  className="
+                    mb-4
+                    inline-flex
+                    items-center
+                    rounded-full
+                    bg-oc-maroon-800
+                    px-4
+                    py-1.5
+                    text-[10px]
+                    font-semibold
+                    uppercase
+                    tracking-[0.16em]
+                    text-oc-cream-50
+                  "
+                >
+                  {group.title}
+                </div>
+              )}
+
+              <ul
+                className={
+                  groups.length === 1
+                    ? "grid grid-cols-1 gap-x-8 sm:grid-cols-2"
+                    : "flex flex-col"
+                }
+              >
+                {group.items.map((item, itemIndex) => (
+                  <li
+                    key={item.name}
+                    className={`
+                      flex
+                      items-start
+                      justify-between
+                      gap-4
+                      py-2.5
+                      ${
+                        itemIndex !== group.items.length - 1
+                          ? "border-b border-oc-ink-900/[0.06]"
+                          : ""
+                      }
+                    `}
+                  >
+                    <span className="flex items-start gap-2 text-[13px] leading-5 text-oc-ink-900/80">
+                      <Check
+                        className="mt-0.5 size-3 shrink-0 text-oc-gold-500"
+                        strokeWidth={2}
+                        aria-hidden="true"
+                      />
+                      {item.name}
+                    </span>
+
+                    <span className="flex shrink-0 items-baseline gap-1 whitespace-nowrap">
+                      {item.from && (
+                        <span className="text-[8px] font-medium uppercase tracking-[0.1em] text-oc-ink-900/35">
+                          From
+                        </span>
+                      )}
+                      {item.price ? (
+                        <span className="font-[family-name:var(--font-display)] text-sm font-semibold text-oc-maroon-800">
+                          ${item.price}
+                        </span>
+                      ) : (
+                        <span className="text-[11px] font-medium text-oc-ink-900/40">
+                          Ask in-shop
+                        </span>
+                      )}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* =======================================================
+            BOOKING NOTE
+        ======================================================= */}
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 16,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+            margin: "-50px",
+          }}
+          transition={{
+            duration: 0.6,
+            delay: 0.1,
+          }}
+          className="
+            mx-auto
+            mt-10
+            flex
+            max-w-2xl
+            flex-col
+            items-center
+            gap-3
+            text-center
+          "
+        >
+          {activeTab === "salon" && (
+            <p className="text-[12px] text-oc-ink-900/45">
+              A private room is available for clients who prefer a
+              closed-off space.
+            </p>
+          )}
+
+          <a
+            href={PHONE_HREF}
+            className="
+              inline-flex
+              items-center
+              gap-2
+              rounded-full
+              border
+              border-oc-gold-500/30
+              bg-oc-gold-500/[0.06]
+              px-5
+              py-2.5
+              text-[12px]
+              font-semibold
+              text-oc-maroon-800
+              transition-all
+              duration-300
+              hover:border-oc-gold-500/55
+              hover:bg-oc-gold-500/[0.12]
+              focus-visible:outline-2
+              focus-visible:outline-offset-2
+              focus-visible:outline-oc-gold-500
+            "
+          >
+            <Phone className="size-3.5" strokeWidth={1.75} aria-hidden="true" />
+            Prefer to book by phone? Call {PHONE_DISPLAY}
+          </a>
+        </motion.div>
 
         {/* =======================================================
             BOTTOM NOTE

@@ -1,6 +1,8 @@
 import type { SVGProps } from "react";
-import { Scissors, ArrowUpRight } from "lucide-react";
+import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
 import { ScallopDivider } from "./scallop-divider";
+import logo from "@/assets/logo.png";
 
 function InstagramIcon(props: SVGProps<SVGSVGElement>) {
   return (
@@ -205,23 +207,20 @@ export function Footer() {
               <span
                 className="
                   relative flex size-11 shrink-0 items-center justify-center
-                  rounded-full border border-[#c6a15b]/20
-                  bg-[#c6a15b]/[0.07]
-                  text-[#d7b873]
+                  overflow-hidden rounded-full border border-[#c6a15b]/20
+                  bg-[#f5f0e8]
+                  p-[3px]
                   transition-all duration-500
                   group-hover/brand:border-[#c6a15b]/50
-                  group-hover/brand:bg-[#c6a15b]/[0.12]
-                  group-hover/brand:shadow-[0_0_30px_rgba(198,161,91,0.12)]
+                  group-hover/brand:shadow-[0_0_30px_rgba(198,161,91,0.18)]
                 "
               >
-                <Scissors
-                  className="
-                    size-[18px]
-                    transition-transform duration-500
-                    group-hover/brand:rotate-[-12deg]
-                  "
-                  strokeWidth={1.5}
-                  aria-hidden="true"
+                <Image
+                  src={logo}
+                  alt="Open Chair Barbershop & Salon"
+                  fill
+                  sizes="44px"
+                  className="relative object-contain transition-transform duration-500 group-hover/brand:scale-[1.05]"
                 />
 
                 <span

@@ -2,6 +2,7 @@ import { Hero } from "@/components/open-chair/Herohome";
 import { About } from "@/components/open-chair/about";
 import { Advantage } from "@/components/open-chair/advantage";
 import { Services } from "@/components/open-chair/our-service";
+import { OurStars } from "@/components/open-chair/our-stars";
 import { Gallery } from "@/components/open-chair/Gallery";
 import { Reviews } from "@/components/open-chair/reviews";
 import { CtaBooking } from "@/components/open-chair/cta-booking";
@@ -15,6 +16,7 @@ export default function Home() {
         <About />
         <Advantage />
         <Services />
+        <OurStars />
         <Gallery />
         <Reviews />
         <CtaBooking />

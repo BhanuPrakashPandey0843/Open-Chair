@@ -1,15 +1,18 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { AnimatePresence, motion } from "motion/react";
-import { ArrowRight, Menu, Scissors, X } from "lucide-react";
+import { ArrowRight, Menu, X } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const NAV_LINKS = [
   { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Gallery", href: "#gallery" },
-  { label: "Reviews", href: "#reviews" },
+  { label: "Who We Are", href: "#about" },
+  { label: "What We Offer", href: "#services" },
+  { label: "Our Stars", href: "#stars" },
+  { label: "Styles & Smiles", href: "#gallery" },
+  { label: "Get In Touch", href: "#contact" },
 ];
 
 const BOOKING_HREF = "https://openchairbarbershopchatham.setmore.com/book";
@@ -58,20 +61,14 @@ export function Navbar() {
             ${isSolid ? "text-oc-ink-900" : "text-white"}
           `}
         >
-          <span
-            className={`
-              relative flex size-9 shrink-0 items-center justify-center
-              rounded-full border
-              transition-all duration-500
-              ${isSolid
-                ? "border-oc-gold-500/30 bg-oc-gold-500/[0.08] text-oc-maroon-800"
-                : "border-oc-gold-300/30 bg-white/[0.06] text-oc-gold-200"}
-            `}
-          >
-            <Scissors
-              className="size-4 transition-transform duration-500 group-hover/brand:rotate-[-12deg]"
-              strokeWidth={1.5}
-              aria-hidden="true"
+          <span className="relative flex size-10 shrink-0 items-center justify-center overflow-hidden rounded-full bg-oc-cream-50/95 p-0.5 shadow-sm transition-transform duration-500 group-hover/brand:scale-[1.04] sm:size-12">
+            <Image
+              src={logo}
+              alt="Open Chair Barbershop & Salon"
+              fill
+              sizes="(min-width: 640px) 48px, 40px"
+              className="object-contain"
+              priority
             />
           </span>
 
