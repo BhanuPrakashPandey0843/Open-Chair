@@ -20,6 +20,7 @@
   --color-oc-gold-200: var(--oc-gold-200);
   --color-oc-cream-50: var(--oc-cream-50);
   --color-oc-ink-900: var(--oc-ink-900);
+  --color-oc-mist-100: var(--oc-mist-100);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -59,36 +60,45 @@
 }
 
 :root {
-  /* Open Chair brand palette */
-  --oc-maroon-950: #2a0f14;
-  --oc-maroon-900: #35121a;
-  --oc-maroon-800: #4a1620;
-  --oc-maroon-700: #63212f;
-  --oc-gold-600: #a8823a;
-  --oc-gold-500: #c9a24b;
-  --oc-gold-300: #e7cd8a;
-  --oc-gold-200: #f0dfb0;
-  --oc-cream-50: #fbf6ec;
-  --oc-ink-900: #2b1219;
+  /* Open Chair brand palette — client blue & charcoal scheme.
+     Token names are kept from the previous theme so every component
+     picks up the new colours automatically:
+       oc-maroon-*  -> navy / blue family  (950 deepest ... 700 lightest)
+       oc-gold-*    -> silver / steel-blue accents
+       oc-cream-50  -> cool porcelain page background
+       oc-mist-100  -> soft grey-blue alternate section background
+       oc-ink-900   -> charcoal
+  */
+  --oc-maroon-950: #0f1e33; /* deep navy (darkest shade of Primary Blue) */
+  --oc-maroon-900: #1e3a5f; /* Primary Blue   */
+  --oc-maroon-800: #2f4f78; /* Secondary Blue */
+  --oc-maroon-700: #4a6a9a; /* Light Blue     */
+  --oc-gold-600: #3d5d8d;   /* steel blue — eyebrows & accents on light */
+  --oc-gold-500: #4a6a9a;   /* Light Blue accent on light backgrounds   */
+  --oc-gold-300: #d9d9d9;   /* Soft Gray — accent on dark backgrounds   */
+  --oc-gold-200: #bfd1ea;   /* ice blue — italic highlights on dark     */
+  --oc-cream-50: #f4f6f9;   /* porcelain page background                */
+  --oc-mist-100: #e3e9f1;   /* soft gray-blue alternate section         */
+  --oc-ink-900: #2b2b2b;    /* Charcoal */
 
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  --background: var(--oc-cream-50);
+  --foreground: var(--oc-ink-900);
+  --card: #ffffff;
+  --card-foreground: var(--oc-ink-900);
+  --popover: #ffffff;
+  --popover-foreground: var(--oc-ink-900);
+  --primary: var(--oc-maroon-900);
+  --primary-foreground: var(--oc-cream-50);
+  --secondary: var(--oc-mist-100);
+  --secondary-foreground: var(--oc-maroon-900);
+  --muted: var(--oc-mist-100);
+  --muted-foreground: #5f6b7d;
+  --accent: var(--oc-mist-100);
+  --accent-foreground: var(--oc-maroon-900);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
+  --border: var(--oc-gold-300);
+  --input: var(--oc-gold-300);
+  --ring: var(--oc-maroon-700);
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
@@ -148,6 +158,12 @@
   }
   html {
     @apply font-sans;
+    accent-color: var(--oc-maroon-800);
+    scrollbar-color: var(--oc-maroon-700) var(--oc-mist-100);
+  }
+  ::selection {
+    background: var(--oc-maroon-800);
+    color: var(--oc-cream-50);
   }
 }
 
@@ -173,6 +189,39 @@
 }
 
 @layer utilities {
+  /* ---- Premium finishes: silver + sapphire (palette-only, no gold) ---- */
+  .text-silver {
+    background-image: linear-gradient(180deg, #ffffff 0%, #e6eefa 42%, #a9bfdf 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .text-sapphire {
+    background-image: linear-gradient(180deg, #5c7db0 0%, #2f4f78 55%, #1e3a5f 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .bg-silver {
+    background-color: #d9d9d9;
+    background-image: linear-gradient(180deg, #fafbfd 0%, #dfe2e7 52%, #b8c1ce 100%);
+  }
+  .bg-silver:hover {
+    background-image: linear-gradient(180deg, #ffffff 0%, #eaeff6 52%, #c9d6ea 100%);
+  }
+
+  .bg-sapphire {
+    background-color: #2f4f78;
+    background-image: linear-gradient(180deg, #42669a 0%, #2f4f78 55%, #27436a 100%);
+  }
+  .bg-sapphire:hover {
+    background-image: linear-gradient(180deg, #5578ad 0%, #3d6193 55%, #2f4f78 100%);
+  }
+
   .animate-marquee-left {
     animation: marquee-left 46s linear infinite;
   }

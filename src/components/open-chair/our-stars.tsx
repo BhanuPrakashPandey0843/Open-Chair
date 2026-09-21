@@ -22,12 +22,12 @@ import {
   Sparkles,
 } from "lucide-react";
 
-import naveedPortrait from "@/assets/baarber/NAVEED PASHA.png";
+import naveedPortrait from "@/assets/baarber/Danny Pasha.jpeg";
 import saleemPortrait from "@/assets/baarber/SALEEM AKTHAR.png";
 import anmolPortrait from "@/assets/baarber/Barber Anmol.jpeg";
 import husseinPortrait from "@/assets/baarber/Barber Hussien.jpeg";
 // TODO: swap for a proper Megan portrait once one is added to assets/baarber.
-import meganPortrait from "@/assets/images/pl.jpeg";
+import meganPortrait from "@/assets/baarber/megan awarm.jpeg";
 
 /* =============================================================
    CONSTANTS
@@ -69,7 +69,7 @@ type TeamMember = {
 
 const FOUNDERS: readonly [Founder, Founder] = [
   {
-    name: "Naveed Pasha",
+    name: "NAVEED PASHA",
     image: naveedPortrait,
     objectPosition: "50% 40%",
   },
@@ -81,9 +81,9 @@ const FOUNDERS: readonly [Founder, Founder] = [
 ];
 
 const STORY_PARAGRAPHS = [
-  "Open Chair started from something small: the simple struggle of trying to get a haircut without turning it into a whole process. Back in the U.S., I could walk in, wait a few minutes, and get on with my day. When I moved to Canada, I realized that wasn’t the norm. Everything needed an appointment, and even then, the experience didn’t always feel personal.",
-  "That bothered me. I kept thinking about a place where people could walk in without stress, sit down, and know they’d be understood—whether it was their hair type, their cultural style, or just the kind of day they were having. I shared the idea with Saleem Akhtar, and that was the beginning.",
-  "We wanted a space that felt easy for families. A place where parents didn’t have to rush, where kids had a corner to play, and where anyone—from any background—could walk in and feel comfortable. Not a themed shop. Not a trendy experiment. Not a money-minting machine. We created a steady, reliable grooming space built for a growing, diverse community of Chatham-Kent.",
+  "Open Chair started from something small: the simple struggle of trying to get a haircut without turning it into a whole process. I’d heard stories about how, back in the U.S., my dad could walk in to any salon, wait a few minutes to get things done and get on with his day. When he moved to Canada, he realised that wasn’t the norm. Everything needed an appointment, and even then, the experience didn’t always feel personal.",
+  "That bothered him and, gradually, me too. I kept thinking about a place where people could walk in without stress, sit down, and know they’d be understood—whether it was their hair type, their cultural style, or just the kind of day they were having. I shared the idea with my dad and Saleem Akhtar, and that was the beginning.",
+  "We wanted a space that felt easy for families. A place where parents didn’t have to rush, where kids had a corner to play, and where anyone—from any background—could walk in and feel comfortable. Not a themed shop. Not a trendy experiment. Not a money-minting machine. We wanted to create a steady, reliable grooming space built for a growing, diverse community of Chatham-Kent.",
 ] as const;
 
 const TEAM: readonly TeamMember[] = [
@@ -198,7 +198,7 @@ function YearsStat({ years, label }: { years: number; label: string }) {
       <CountUp
         value={years}
         run={inView}
-        className={`${DISPLAY} bg-gradient-to-b from-oc-gold-200 to-oc-gold-500 bg-clip-text text-6xl font-medium leading-[0.85] tracking-[-0.04em] text-transparent`}
+        className={`${DISPLAY} bg-gradient-to-b from-oc-cream-50 to-oc-gold-200 bg-clip-text text-6xl font-medium leading-[0.85] tracking-[-0.04em] text-transparent`}
       />
       <span className="sr-only">{`${years} ${label}`}</span>
       <p
@@ -257,26 +257,26 @@ function Background({ animated }: { animated: boolean }) {
   return (
     <div aria-hidden="true" className="pointer-events-none absolute inset-0">
       {/* Top spotlight */}
-      <div className="absolute inset-0 bg-[radial-gradient(60%_38%_at_50%_0%,rgba(201,162,75,0.10),transparent)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(60%_38%_at_50%_0%,rgba(74,106,154,0.34),transparent)]" />
 
       {/* Fine dot texture */}
       <div
         className="absolute inset-0 opacity-[0.06]"
         style={{
           backgroundImage:
-            "radial-gradient(circle, rgba(231,205,138,0.9) 0.5px, transparent 0.6px)",
+            "radial-gradient(circle, rgba(217,217,217,0.9) 0.5px, transparent 0.6px)",
           backgroundSize: "20px 20px",
         }}
       />
 
       {/* Drifting gold glows */}
       <motion.div
-        className="absolute -left-40 top-0 size-[440px] rounded-full bg-oc-gold-500/[0.06] blur-[130px]"
+        className="absolute -left-40 top-0 size-[440px] rounded-full bg-oc-maroon-700/[0.28] blur-[130px]"
         animate={animated ? { x: [0, 25, 0], y: [0, -20, 0] } : undefined}
         transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
-        className="absolute -right-40 bottom-0 size-[420px] rounded-full bg-oc-gold-500/[0.04] blur-[130px]"
+        className="absolute -right-40 bottom-0 size-[420px] rounded-full bg-oc-maroon-700/[0.20] blur-[130px]"
         animate={animated ? { x: [0, -20, 0], y: [0, 20, 0] } : undefined}
         transition={{ duration: 17, repeat: Infinity, ease: "easeInOut" }}
       />
@@ -303,7 +303,7 @@ function SectionHeader() {
         id="stars-heading"
         className={`${DISPLAY} mt-4 text-4xl font-medium leading-[1.05] tracking-[-0.03em] sm:text-5xl`}
       >
-        Our <span className="italic text-oc-gold-200">Stars</span>
+        Our <span className="italic text-silver">Stars</span>
       </h2>
 
       <p className="mt-4 max-w-lg text-[13px] leading-6 text-oc-cream-50/55 sm:text-sm">
@@ -384,11 +384,11 @@ function FounderArch({
             sizes="(min-width: 1024px) 28vw, (min-width: 640px) 260px, 50vw"
             placeholder="blur"
             style={{ objectPosition: founder.objectPosition }}
-            className="object-cover transition-[filter,scale] duration-[900ms] ease-out [filter:grayscale(1)_sepia(0.5)_contrast(1.05)_brightness(0.9)] group-hover/founder:scale-[1.05] group-hover/founder:[filter:grayscale(0.55)_sepia(0.45)_contrast(1.05)_brightness(0.95)] motion-reduce:transition-none"
+            className="object-cover transition-[filter,scale] duration-[900ms] ease-out [filter:grayscale(1)_contrast(1.05)_brightness(0.95)] group-hover/founder:scale-[1.05] group-hover/founder:[filter:grayscale(0.55)_contrast(1.05)_brightness(1)] motion-reduce:transition-none"
           />
           <span
             aria-hidden="true"
-            className="absolute inset-0 bg-oc-maroon-700/45 mix-blend-multiply"
+            className="absolute inset-0 bg-oc-maroon-700/55 mix-blend-multiply"
           />
           <span
             aria-hidden="true"
@@ -430,7 +430,7 @@ function FoundersStory() {
       <motion.div
         aria-hidden="true"
         style={{ x: wordX }}
-        className={`${DISPLAY} pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 select-none whitespace-nowrap text-center text-[clamp(5rem,17vw,15rem)] font-medium leading-none tracking-[-0.04em] text-transparent [-webkit-text-stroke:1px_rgba(231,205,138,0.09)]`}
+        className={`${DISPLAY} pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 select-none whitespace-nowrap text-center text-[clamp(5rem,17vw,15rem)] font-medium leading-none tracking-[-0.04em] text-transparent [-webkit-text-stroke:1px_rgba(217,217,217,0.09)]`}
       >
         OPEN CHAIR
       </motion.div>
@@ -473,7 +473,7 @@ function FoundersStory() {
             className={`${DISPLAY} mt-5 text-[2rem] font-medium leading-[1.08] tracking-[-0.03em] sm:text-4xl lg:text-[2.6rem]`}
           >
             A chair that’s{" "}
-            <span className="italic text-oc-gold-200">always open</span>.
+            <span className="italic text-silver">always open</span>.
           </motion.h3>
 
           <div className="mt-6 space-y-4 text-[13.5px] leading-[1.85] text-oc-cream-50/65 sm:text-[15px]">
@@ -525,7 +525,7 @@ function FoundersStory() {
             <span className="h-px w-12 shrink-0 bg-oc-gold-300/50" />
             <div>
               <p className={`${DISPLAY} text-2xl italic text-oc-gold-200`}>
-                Naveed Pasha{" "}
+                Danny Pasha{" "}
                 <span className="not-italic text-oc-gold-300/60">&amp;</span>{" "}
                 Saleem Akhtar
               </p>
@@ -582,7 +582,7 @@ function TeamPanel({ member, index, active, stageId, onActivate }: TeamPanelProp
                 }
               : null),
           }}
-          className="object-cover transition-[filter,scale] duration-[1200ms] ease-out motion-reduce:transition-none lg:scale-[1.1] lg:[filter:grayscale(1)_sepia(0.4)_contrast(1.05)_brightness(0.8)] lg:group-data-[active=true]/panel:scale-100 lg:group-data-[active=true]/panel:[filter:none]"
+          className="object-cover transition-[filter,scale] duration-[1200ms] ease-out motion-reduce:transition-none lg:scale-[1.1] lg:[filter:grayscale(1)_contrast(1.05)_brightness(0.8)] lg:group-data-[active=true]/panel:scale-100 lg:group-data-[active=true]/panel:[filter:none]"
         />
 
         {/* Depth gradient */}
@@ -738,7 +738,7 @@ function TeamShowcase() {
         <h3
           className={`${DISPLAY} mt-4 text-3xl font-medium leading-[1.08] tracking-[-0.03em] sm:text-4xl`}
         >
-          Behind every <span className="italic text-oc-gold-200">chair</span>
+          Behind every <span className="italic text-silver">chair</span>
         </h3>
 
         <p className="mt-4 text-[13px] leading-6 text-oc-cream-50/55 sm:text-sm">
@@ -791,7 +791,7 @@ export function OurStars() {
       <section
         id="stars"
         aria-labelledby="stars-heading"
-        className="relative isolate overflow-hidden bg-oc-maroon-950 px-6 py-24 text-oc-cream-50 sm:px-10 sm:py-28 lg:py-32"
+        className="relative isolate overflow-hidden bg-[linear-gradient(180deg,#0f1e33_0%,#0c1421_55%,#12161d_100%)] px-6 py-24 text-oc-cream-50 sm:px-10 sm:py-28 lg:py-32"
       >
         <Background animated={!reduceMotion} />
 

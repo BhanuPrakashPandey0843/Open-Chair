@@ -56,7 +56,7 @@ export function About() {
         relative
         isolate
         overflow-hidden
-        bg-oc-cream-50
+        bg-gradient-to-b from-[#f9fbfd] via-oc-cream-50 to-[#e8eef5]
         px-6
         py-20
         text-oc-ink-900
@@ -80,12 +80,12 @@ export function About() {
             backgroundImage: `
               radial-gradient(
                 circle,
-                rgba(42,15,20,0.7) 0.5px,
+                rgba(15,30,51,0.7) 0.5px,
                 transparent 0.7px
               ),
               radial-gradient(
                 circle,
-                rgba(42,15,20,0.3) 0.45px,
+                rgba(15,30,51,0.3) 0.45px,
                 transparent 0.65px
               )
             `,
@@ -102,7 +102,7 @@ export function About() {
             top-1/4
             size-[420px]
             rounded-full
-            bg-oc-gold-500/[0.035]
+            bg-oc-maroon-700/[0.13]
             blur-[120px]
           "
           animate={{
@@ -123,7 +123,7 @@ export function About() {
             bottom-0
             size-[400px]
             rounded-full
-            bg-oc-maroon-800/[0.025]
+            bg-oc-maroon-800/[0.10]
             blur-[120px]
           "
           animate={{
@@ -229,7 +229,7 @@ export function About() {
             "
           >
             In many cultures, salon time is{" "}
-            <span className="italic text-oc-maroon-700">
+            <span className="italic text-sapphire">
               ME time
             </span>{" "}
         .
@@ -494,7 +494,7 @@ export function About() {
                 overflow-hidden
                 rounded-[18px]
                 bg-oc-maroon-900/5
-                shadow-[0_30px_70px_-30px_rgba(42,15,20,0.35)]
+                shadow-[0_30px_70px_-30px_rgba(15,30,51,0.35)]
               "
             >
               {/* Image */}
@@ -575,7 +575,7 @@ export function About() {
                   px-4
                   py-3.5
                   text-white
-                  shadow-[0_15px_35px_-12px_rgba(42,15,20,0.45)]
+                  shadow-[0_15px_35px_-12px_rgba(15,30,51,0.45)]
                   sm:-bottom-2
                   sm:-left-2
                   sm:min-w-[118px]

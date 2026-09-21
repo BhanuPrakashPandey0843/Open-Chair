@@ -22,6 +22,72 @@ const ROW_ONE: Testimonial[] = [
     name: "Arjun Mehta",
     role: "Regular, 8 months",
   },
+   {
+    name: "Eric Blaire",
+    quote:
+      "Absolutely the best barber experience I've had. The team at Open Chair pays attention to every detail, and my haircut came out exactly how I wanted. Clean space, great atmosphere, and top-notch service.",
+    role: "Verified client",
+  },
+  {
+    name: "Simon Claude",
+    quote:
+      "Open Chair delivers premium grooming from start to finish. The barber understood my style instantly and gave me a sharp, modern cut. Highly recommend this place if you're looking for quality.",
+    role: "Verified client",
+  },
+  {
+    name: "Wendy Stone",
+    quote:
+      "I booked a haircut and beard styling for my husband, and he loved the results. Professional staff, relaxing environment, and excellent customer service. We'll definitely be coming back.",
+    role: "Verified client",
+  },
+  {
+    name: "Kabir Verma",
+    quote:
+      "Hands down one of the finest salons in town. The fade was incredibly clean, the beard trim was perfect, and the styling advice was genuinely helpful. Worth every penny.",
+    role: "Verified client",
+  },
+  {
+    name: "Mohammed Aslam",
+    quote:
+      "Very impressed with the professionalism at Open Chair. The appointment was on time, the service was exceptional, and the haircut exceeded my expectations. A place you can trust for consistent quality.",
+    role: "Verified client",
+  },
+  {
+    name: "Caleb Morrison",
+    quote:
+      "From the warm welcome to the final styling, everything felt premium. The barber took time to understand what I wanted and delivered an outstanding haircut. Five stars without a doubt.",
+    role: "Verified client",
+  },
+  {
+    name: "Jenna Carver",
+    quote:
+      "The salon has such a modern and welcoming vibe. The staff are friendly, skilled, and make you feel comfortable throughout the appointment. My haircut and styling turned out amazing.",
+    role: "Verified client",
+  },
+  {
+    name: "Omar Farouq",
+    quote:
+      "Excellent attention to detail and fantastic service. My beard shaping was precise, and the haircut looked fresh and stylish. Open Chair has become my go-to grooming spot.",
+    role: "Verified client",
+  },
+  {
+    name: "Linda McKinnon",
+    quote:
+      "A premium salon experience with talented professionals. The service was smooth, hygienic, and personalized. I left feeling refreshed and confident with my new look.",
+    role: "Verified client",
+  },
+  {
+    name: "Sofia DeLuca",
+    quote:
+      "Loved everything about Open Chair. The team is incredibly talented, the salon is spotless, and they genuinely care about giving clients the perfect style. Highly recommended.",
+    role: "Verified client",
+  },
+  {
+    name: "Ryan Hales",
+    quote:
+      "I've tried several barber shops, but Open Chair stands out for its consistency and quality. Great haircut, relaxing experience, and friendly professionals who know exactly what they're doing.",
+    role: "Verified client",
+  },
   {
     quote:
       "Booking online took thirty seconds and the confirmation landed instantly. The chair itself is the comfiest I've sat in.",
@@ -88,11 +154,11 @@ function MarqueeCard({ testimonial }: { testimonial: Testimonial }) {
         border-oc-maroon-900/[0.08]
         bg-white/80
         p-6
-        shadow-[0_2px_8px_rgba(42,15,20,0.03)]
+        shadow-[0_2px_8px_rgba(15,30,51,0.05)]
         backdrop-blur-sm
         transition-shadow
         duration-500
-        hover:shadow-[0_22px_50px_-28px_rgba(42,15,20,0.28)]
+        hover:shadow-[0_22px_50px_-28px_rgba(15,30,51,0.28)]
         sm:w-[340px]
         sm:p-7
       "
@@ -227,7 +293,7 @@ function MarqueeRow({
 
 export function Reviews() {
   return (
-    <section id="reviews" className="group/reviews relative isolate overflow-hidden bg-oc-cream-50 py-24 text-oc-ink-900 sm:py-32">
+    <section id="reviews" className="group/reviews relative isolate overflow-hidden bg-oc-mist-100 py-24 text-oc-ink-900 sm:py-32">
       {/* =========================================================
           Background texture
       ========================================================= */}
@@ -240,8 +306,8 @@ export function Reviews() {
           className="absolute inset-0 opacity-[0.035]"
           style={{
             backgroundImage: `
-              radial-gradient(circle, rgba(42,15,20,0.7) 0.55px, transparent 0.7px),
-              radial-gradient(circle, rgba(42,15,20,0.45) 0.45px, transparent 0.6px)
+              radial-gradient(circle, rgba(15,30,51,0.7) 0.55px, transparent 0.7px),
+              radial-gradient(circle, rgba(15,30,51,0.45) 0.45px, transparent 0.6px)
             `,
             backgroundPosition: "0 0, 8px 9px",
             backgroundSize: "13px 13px, 17px 17px",
@@ -256,7 +322,7 @@ export function Reviews() {
             top-20
             size-[420px]
             rounded-full
-            bg-oc-gold-500/[0.035]
+            bg-oc-maroon-700/[0.16]
             blur-[100px]
           "
           animate={{
@@ -277,7 +343,7 @@ export function Reviews() {
             bottom-0
             size-[380px]
             rounded-full
-            bg-oc-maroon-800/[0.035]
+            bg-oc-maroon-800/[0.12]
             blur-[100px]
           "
           animate={{
@@ -345,14 +411,14 @@ export function Reviews() {
             />
           </div>
 
-          <p className="mt-7 text-[10px] font-semibold uppercase tracking-[0.24em] text-oc-maroon-700/60">
+          <p className="mt-7 text-[10px] font-semibold uppercase tracking-[0.24em] text-oc-gold-600">
             From the chair
           </p>
 
           <h2 className="mt-3 text-center font-[family-name:var(--font-display)] text-4xl leading-[1.08] font-medium tracking-[-0.025em] sm:text-5xl">
             What our clients
             <br />
-            <span className="text-oc-maroon-800 italic">
+            <span className="text-sapphire italic">
               say about us
             </span>
           </h2>
@@ -457,7 +523,7 @@ export function Reviews() {
                   justify-center
                   rounded-full
                   border-2
-                  border-oc-cream-50
+                  border-oc-mist-100
                   bg-oc-maroon-800
                   text-[9px]
                   font-semibold

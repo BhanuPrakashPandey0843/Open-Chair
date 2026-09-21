@@ -484,7 +484,7 @@ export function Gallery() {
               className="mt-4 font-[family-name:var(--font-display)] text-4xl leading-[1.05] font-medium tracking-[-0.025em] text-white sm:text-6xl"
             >
               Step inside{" "}
-              <span className="italic text-oc-gold-200">Open Chair</span>
+              <span className="italic text-silver">Open Chair</span>
             </motion.h2>
 
             <motion.a
@@ -510,7 +510,7 @@ export function Gallery() {
       ========================================================= */}
       <section
         id="gallery"
-        className="group/gallery relative isolate overflow-hidden bg-oc-cream-50 px-6 py-24 text-oc-ink-900 sm:px-10 sm:py-28 lg:py-32"
+        className="group/gallery relative isolate overflow-hidden bg-gradient-to-b from-[#f9fbfd] via-oc-cream-50 to-oc-cream-50 px-6 py-24 text-oc-ink-900 sm:px-10 sm:py-28 lg:py-32"
       >
         {/* Background texture */}
         <div aria-hidden="true" className="pointer-events-none absolute inset-0">
@@ -518,8 +518,8 @@ export function Gallery() {
             className="absolute inset-0 opacity-[0.035]"
             style={{
               backgroundImage: `
-                radial-gradient(circle, rgba(42,15,20,0.65) 0.55px, transparent 0.7px),
-                radial-gradient(circle, rgba(42,15,20,0.35) 0.45px, transparent 0.6px)
+                radial-gradient(circle, rgba(15,30,51,0.65) 0.55px, transparent 0.7px),
+                radial-gradient(circle, rgba(15,30,51,0.35) 0.45px, transparent 0.6px)
               `,
               backgroundPosition: "0 0, 8px 10px",
               backgroundSize: "13px 13px, 17px 17px",
@@ -527,13 +527,13 @@ export function Gallery() {
           />
 
           <motion.div
-            className="absolute -left-48 top-10 size-[420px] rounded-full bg-oc-gold-500/[0.035] blur-[110px]"
+            className="absolute -left-48 top-10 size-[420px] rounded-full bg-oc-maroon-700/[0.13] blur-[110px]"
             animate={{ x: [0, 25, 0], y: [0, -15, 0] }}
             transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
           />
 
           <motion.div
-            className="absolute -right-48 bottom-0 size-[400px] rounded-full bg-oc-maroon-800/[0.025] blur-[110px]"
+            className="absolute -right-48 bottom-0 size-[400px] rounded-full bg-oc-maroon-800/[0.10] blur-[110px]"
             animate={{ x: [0, -20, 0], y: [0, 15, 0] }}
             transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
           />
@@ -557,7 +557,7 @@ export function Gallery() {
             </div>
 
             <h2 className="mt-4 font-[family-name:var(--font-display)] text-4xl leading-[1.05] font-medium tracking-[-0.025em] sm:text-5xl">
-              Our <span className="text-oc-maroon-800 italic">Gallery</span>
+              Our <span className="text-sapphire italic">Gallery</span>
             </h2>
 
             <p className="mt-4 max-w-md text-[13px] leading-6 text-oc-ink-900/50 sm:text-sm">
@@ -592,7 +592,7 @@ export function Gallery() {
                     transition-all duration-300
                     ${
                       isActive
-                        ? "border-oc-maroon-800 bg-oc-maroon-800 text-oc-cream-50"
+                        ? "border-oc-maroon-800 bg-sapphire text-oc-cream-50"
                         : "border-oc-maroon-900/12 bg-white/70 text-oc-ink-900/55 hover:border-oc-gold-500/40 hover:text-oc-ink-900/85"
                     }
                   `}
@@ -641,9 +641,9 @@ export function Gallery() {
                     whileHover={{ y: -3 }}
                     className={`
                       group/item relative min-h-[230px] overflow-hidden rounded-2xl
-                      bg-oc-maroon-900/5 text-left shadow-[0_2px_8px_rgba(42,15,20,0.04)]
+                      bg-oc-maroon-900/5 text-left shadow-[0_2px_8px_rgba(15,30,51,0.06)]
                       transition-shadow duration-500
-                      hover:shadow-[0_25px_55px_-25px_rgba(42,15,20,0.28)]
+                      hover:shadow-[0_25px_55px_-25px_rgba(15,30,51,0.28)]
                       focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-oc-gold-500
                       sm:min-h-[260px] lg:min-h-0 ${spanClass}
                     `}
@@ -695,7 +695,7 @@ export function Gallery() {
                 initial={{ opacity: 0, y: 24, scale: 0.98 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 whileHover={{ y: -3 }}
-                className="group/item relative flex min-h-[230px] flex-col items-center justify-center gap-3 overflow-hidden rounded-2xl border border-oc-maroon-900/10 bg-oc-maroon-900 text-center text-oc-cream-50 shadow-[0_2px_8px_rgba(42,15,20,0.08)] transition-shadow duration-500 hover:shadow-[0_25px_55px_-25px_rgba(42,15,20,0.45)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-oc-gold-500 sm:min-h-[260px] lg:col-span-1 lg:row-span-1 lg:min-h-0"
+                className="group/item relative flex min-h-[230px] flex-col items-center justify-center gap-3 overflow-hidden rounded-2xl border border-oc-maroon-900/10 bg-oc-maroon-900 text-center text-oc-cream-50 shadow-[0_2px_8px_rgba(15,30,51,0.12)] transition-shadow duration-500 hover:shadow-[0_25px_55px_-25px_rgba(15,30,51,0.5)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-oc-gold-500 sm:min-h-[260px] lg:col-span-1 lg:row-span-1 lg:min-h-0"
               >
                 <div
                   aria-hidden="true"

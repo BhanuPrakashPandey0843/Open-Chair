@@ -23,7 +23,7 @@ const BOOKING_HREF = "https://openchairbarbershopchatham.setmore.com/book";
 
 export function CtaBooking() {
   return (
-    <section id="contact" className="relative bg-oc-maroon-800 text-oc-cream-50">
+    <section id="contact" className="relative bg-[linear-gradient(135deg,#0f1e33_0%,#1e3a5f_42%,#2f4f78_100%)] text-oc-cream-50">
       {/* ambient dot texture, echoes woven cape fabric */}
       <div
         aria-hidden="true"
@@ -33,6 +33,12 @@ export function CtaBooking() {
             "radial-gradient(circle, var(--oc-gold-300) 1px, transparent 1px)",
           backgroundSize: "24px 24px",
         }}
+      />
+
+      {/* soft light-blue bloom in the top-right corner */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(55%_80%_at_88%_8%,rgba(191,209,234,0.22),transparent)]"
       />
 
       <div className="relative mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-12 px-6 py-20 sm:px-10 sm:py-28 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16 lg:py-32">
@@ -48,7 +54,7 @@ export function CtaBooking() {
           </p>
           <h2 className="max-w-md font-[family-name:var(--font-display)] text-4xl leading-[1.1] font-medium tracking-tight text-balance sm:text-5xl">
             Claim your{" "}
-            <span className="text-oc-gold-300 italic">open chair</span>{" "}
+            <span className="text-silver italic">open chair</span>{" "}
             today
           </h2>
           <p className="mt-5 max-w-sm text-[15px] leading-relaxed text-oc-cream-50/70">
@@ -113,7 +119,7 @@ export function CtaBooking() {
             rel="noopener noreferrer"
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.98 }}
-            className="group mt-8 flex h-12 w-full items-center justify-center gap-2 rounded-full bg-oc-maroon-800 px-5 text-sm font-semibold text-oc-cream-50 transition-colors hover:bg-oc-maroon-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-oc-gold-500"
+            className="group mt-8 flex h-12 w-full items-center justify-center gap-2 rounded-full bg-sapphire px-5 text-sm font-semibold text-oc-cream-50 shadow-[0_12px_26px_-12px_rgba(15,30,51,0.65)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-oc-gold-500"
           >
             <CalendarCheck className="size-4" strokeWidth={2} aria-hidden="true" />
             Book Now

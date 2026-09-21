@@ -179,7 +179,7 @@ export function Services() {
         relative
         isolate
         overflow-hidden
-        bg-oc-cream-50
+        bg-gradient-to-b from-[#f9fbfd] via-oc-cream-50 to-[#e8eef5]
         px-6
         py-24
         text-oc-ink-900
@@ -202,12 +202,12 @@ export function Services() {
             backgroundImage: `
               radial-gradient(
                 circle,
-                rgba(42,15,20,0.65) 0.55px,
+                rgba(15,30,51,0.65) 0.55px,
                 transparent 0.7px
               ),
               radial-gradient(
                 circle,
-                rgba(42,15,20,0.35) 0.45px,
+                rgba(15,30,51,0.35) 0.45px,
                 transparent 0.6px
               )
             `,
@@ -224,7 +224,7 @@ export function Services() {
             top-20
             size-[460px]
             rounded-full
-            bg-oc-gold-500/[0.035]
+            bg-oc-maroon-700/[0.13]
             blur-[120px]
           "
           animate={{
@@ -245,7 +245,7 @@ export function Services() {
             bottom-0
             size-[440px]
             rounded-full
-            bg-oc-maroon-800/[0.025]
+            bg-oc-maroon-800/[0.10]
             blur-[120px]
           "
           animate={{
@@ -324,7 +324,7 @@ export function Services() {
             "
           >
             Our{" "}
-            <span className="text-oc-maroon-800 italic">
+            <span className="text-sapphire italic">
               Services
             </span>
           </h2>
@@ -407,11 +407,11 @@ export function Services() {
                   border
                   border-oc-maroon-900/[0.08]
                   bg-white/80
-                  shadow-[0_3px_12px_rgba(42,15,20,0.035)]
+                  shadow-[0_3px_12px_rgba(15,30,51,0.05)]
                   backdrop-blur-sm
                   transition-shadow
                   duration-500
-                  hover:shadow-[0_28px_65px_-30px_rgba(42,15,20,0.28)]
+                  hover:shadow-[0_28px_65px_-30px_rgba(15,30,51,0.28)]
                 "
               >
                 {/* =================================================
@@ -616,7 +616,7 @@ export function Services() {
                         hover:-translate-y-0.5
                         hover:border-oc-gold-500/55
                         hover:bg-oc-gold-500/[0.10]
-                        hover:shadow-[0_8px_22px_rgba(198,161,91,0.12)]
+                        hover:shadow-[0_8px_22px_rgba(74,106,154,0.18)]
                         focus-visible:outline-2
                         focus-visible:outline-offset-2
                         focus-visible:outline-oc-gold-500
@@ -720,7 +720,7 @@ export function Services() {
               border-oc-maroon-900/10
               bg-white/70
               p-1.5
-              shadow-[0_3px_12px_rgba(42,15,20,0.04)]
+              shadow-[0_3px_12px_rgba(15,30,51,0.06)]
               backdrop-blur-sm
             "
           >
@@ -742,7 +742,7 @@ export function Services() {
                   duration-300
                   ${
                     activeTab === tab
-                      ? "bg-oc-maroon-800 text-oc-cream-50"
+                      ? "bg-sapphire text-oc-cream-50"
                       : "text-oc-ink-900/50 hover:text-oc-ink-900/80"
                   }
                 `}
@@ -786,7 +786,7 @@ export function Services() {
                 border-oc-maroon-900/[0.08]
                 bg-white/80
                 p-6
-                shadow-[0_3px_12px_rgba(42,15,20,0.035)]
+                shadow-[0_3px_12px_rgba(15,30,51,0.05)]
                 backdrop-blur-sm
                 ${groups.length === 1 ? "sm:col-span-2" : ""}
               `}

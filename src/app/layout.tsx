@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Fraunces, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/open-chair/navbar";
@@ -20,6 +20,11 @@ export const metadata: Metadata = {
   title: "Open Chair | Hair Salon",
   description:
     "Certified stylists, premium products, unmatched comfort — book your chair at Open Chair.",
+};
+
+// Colours the mobile browser chrome / address bar to match the brand navy.
+export const viewport: Viewport = {
+  themeColor: "#1e3a5f",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

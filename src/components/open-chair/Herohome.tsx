@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { ArrowDown, ArrowRight, Sparkles } from "lucide-react";
+import { ArrowDown, ArrowRight } from "lucide-react";
 
 // If your image is inside src/assets, keep this import.
 // If your extension is .png/.webp, change only the extension.
@@ -22,9 +22,6 @@ export function Hero() {
         lg:min-h-screen
       "
     >
-      {/* =========================================================
-          BACKGROUND IMAGE
-      ========================================================= */}
 
       <motion.div
         initial={{
@@ -54,10 +51,6 @@ export function Hero() {
         />
       </motion.div>
 
-      {/* =========================================================
-          DARK / MAROON OVERLAY
-      ========================================================= */}
-
       <div
         aria-hidden="true"
         className="
@@ -65,25 +58,23 @@ export function Hero() {
           inset-0
           -z-10
           bg-gradient-to-r
-          from-[#3a1119]/95
-          via-[#3a1119]/65
-          to-[#250d12]/25
+          from-[#0f1e33]/95
+          via-[#13284a]/65
+          to-[#0b1726]/25
         "
       />
 
-      {/* Mobile overlay */}
       <div
         aria-hidden="true"
         className="
           absolute
           inset-0
           -z-10
-          bg-[#2a0d13]/25
+          bg-[#0f1e33]/25
           lg:hidden
         "
       />
 
-      {/* Bottom fade */}
       <div
         aria-hidden="true"
         className="
@@ -93,14 +84,10 @@ export function Hero() {
           -z-10
           h-48
           bg-gradient-to-t
-          from-[#18090d]/45
+          from-[#070f1a]/50
           to-transparent
         "
       />
-
-      {/* =========================================================
-          SUBTLE TEXTURE
-      ========================================================= */}
 
       <div
         aria-hidden="true"
@@ -161,7 +148,7 @@ export function Hero() {
               xl:text-[74px]
             "
           >
-            <span className="italic text-oc-gold-200">
+            <span className="italic text-silver">
               COME IN
             </span>
 
@@ -244,7 +231,7 @@ export function Hero() {
                 items-center
                 gap-3
                 rounded-full
-                bg-oc-gold-300
+                bg-silver
                 px-6
                 text-[10px]
                 font-semibold
@@ -254,7 +241,7 @@ export function Hero() {
                 shadow-[0_10px_30px_rgba(0,0,0,0.18)]
                 transition-all
                 duration-300
-                hover:bg-oc-gold-200
+                active:brightness-95
                 hover:shadow-[0_15px_35px_rgba(0,0,0,0.25)]
               "
             >
@@ -315,49 +302,6 @@ export function Hero() {
             </motion.a>
           </motion.div>
 
-          {/* =====================================================
-              TRUST / DETAIL ROW
-          ===================================================== */}
-
-          <motion.div
-            initial={{
-              opacity: 0,
-            }}
-            animate={{
-              opacity: 1,
-            }}
-            transition={{
-              duration: 0.7,
-              delay: 1.05,
-            }}
-            className="
-              mt-10
-              flex
-              flex-wrap
-              items-center
-              gap-x-5
-              gap-y-3
-            "
-          >
-            <div className="flex items-center gap-2">
-              <span className="flex size-6 items-center justify-center rounded-full border border-oc-gold-300/25 bg-oc-gold-300/10">
-                <Sparkles
-                  className="size-3 text-oc-gold-200"
-                  strokeWidth={1.5}
-                />
-              </span>
-
-              <span className="text-[9px] uppercase tracking-[0.12em] text-white/55">
-                Premium Treatments
-              </span>
-            </div>
-
-            <span className="hidden h-4 w-px bg-white/15 sm:block" />
-
-            <span className="text-[9px] uppercase tracking-[0.12em] text-white/55">
-              Certified Therapists
-            </span>
-          </motion.div>
         </div>
       </div>
 

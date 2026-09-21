@@ -17,18 +17,7 @@ type Advantage = {
 };
 
 const ADVANTAGES: Advantage[] = [
-  {
-    icon: Home,
-    title: "At Your Doorstep",
-    description:
-      "No commute, no waiting rooms. Every treatment is delivered exactly where you're most comfortable — your home.",
-  },
-  {
-    icon: BadgeCheck,
-    title: "Certified Therapists",
-    description:
-      "Every stylist and therapist is vetted, trained, and certified, so you always know who's walking through your door.",
-  },
+ 
   {
     icon: Sparkles,
     title: "Premium Products",
@@ -41,12 +30,7 @@ const ADVANTAGES: Advantage[] = [
     description:
       "Tools are sanitized before every appointment and single-use items are never reused, so safety is never a question.",
   },
-  {
-    icon: Clock,
-    title: "On-Time, Every Time",
-    description:
-      "Appointments start when they're scheduled to start. Your time matters as much as the treatment itself.",
-  },
+  
   {
     icon: Users,
     title: "Personalized Care",
@@ -63,7 +47,7 @@ export function Advantage() {
         relative
         isolate
         overflow-hidden
-        bg-oc-maroon-950
+        bg-[linear-gradient(180deg,#0f1e33_0%,#0b1626_58%,#10151d_100%)]
         px-6
         py-24
         text-oc-cream-50
@@ -86,7 +70,7 @@ export function Advantage() {
             backgroundImage: `
               radial-gradient(
                 circle,
-                rgba(231,205,138,0.9) 0.5px,
+                rgba(217,217,217,0.9) 0.5px,
                 transparent 0.6px
               )
             `,
@@ -102,7 +86,7 @@ export function Advantage() {
             top-0
             size-[440px]
             rounded-full
-            bg-oc-gold-500/[0.06]
+            bg-oc-maroon-700/[0.30]
             blur-[130px]
           "
           animate={{
@@ -123,7 +107,7 @@ export function Advantage() {
             bottom-0
             size-[420px]
             rounded-full
-            bg-oc-gold-500/[0.04]
+            bg-oc-maroon-700/[0.20]
             blur-[130px]
           "
           animate={{
@@ -172,7 +156,7 @@ export function Advantage() {
             "
           >
             The Open Chair{" "}
-            <span className="italic text-oc-gold-200">advantage</span>
+            <span className="italic text-silver">advantage</span>
           </h2>
 
           <p className="mt-4 max-w-lg text-[13px] leading-6 text-oc-cream-50/55 sm:text-sm">

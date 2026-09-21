@@ -131,8 +131,8 @@ export function Navbar() {
             text-[10px] font-semibold uppercase tracking-[0.12em]
             transition-all duration-300 lg:inline-flex
             ${isSolid
-              ? "bg-oc-maroon-800 text-oc-cream-50 hover:bg-oc-maroon-700"
-              : "bg-oc-gold-300 text-oc-maroon-900 hover:bg-oc-gold-200"}
+              ? "bg-sapphire text-oc-cream-50"
+              : "bg-silver text-oc-maroon-900"}
           `}
         >
           BOOK NOW
@@ -199,7 +199,7 @@ export function Navbar() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setMobileOpen(false)}
-                className="flex h-11 w-full items-center justify-center gap-2.5 rounded-full bg-oc-maroon-800 text-[11px] font-semibold uppercase tracking-[0.12em] text-oc-cream-50 transition-colors hover:bg-oc-maroon-700"
+                className="flex h-11 w-full items-center justify-center gap-2.5 rounded-full bg-sapphire text-[11px] font-semibold uppercase tracking-[0.12em] text-oc-cream-50"
               >
                 BOOK NOW
                 <ArrowRight className="size-3" strokeWidth={1.8} aria-hidden="true" />
