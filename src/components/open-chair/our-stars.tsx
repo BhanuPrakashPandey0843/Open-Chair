@@ -276,7 +276,7 @@ function Background({ animated }: { animated: boolean }) {
         transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
-        className="absolute -right-40 bottom-0 size-[420px] rounded-full bg-oc-maroon-700/[0.20] blur-[130px]"
+        className="absolute -right-40 bottom-0 size-[420px] rounded-full bg-oc-gold-500/[0.15] blur-[130px]"
         animate={animated ? { x: [0, -20, 0], y: [0, 20, 0] } : undefined}
         transition={{ duration: 17, repeat: Infinity, ease: "easeInOut" }}
       />
@@ -303,7 +303,7 @@ function SectionHeader() {
         id="stars-heading"
         className={`${DISPLAY} mt-4 text-4xl font-medium leading-[1.05] tracking-[-0.03em] sm:text-5xl`}
       >
-        Our <span className="italic text-silver">Stars</span>
+        Our <span className="italic text-foil">Stars</span>
       </h2>
 
       <p className="mt-4 max-w-lg text-[13px] leading-6 text-oc-cream-50/55 sm:text-sm">
@@ -473,7 +473,7 @@ function FoundersStory() {
             className={`${DISPLAY} mt-5 text-[2rem] font-medium leading-[1.08] tracking-[-0.03em] sm:text-4xl lg:text-[2.6rem]`}
           >
             A chair that’s{" "}
-            <span className="italic text-silver">always open</span>.
+            <span className="italic text-foil">always open</span>.
           </motion.h3>
 
           <div className="mt-6 space-y-4 text-[13.5px] leading-[1.85] text-oc-cream-50/65 sm:text-[15px]">
@@ -738,7 +738,7 @@ function TeamShowcase() {
         <h3
           className={`${DISPLAY} mt-4 text-3xl font-medium leading-[1.08] tracking-[-0.03em] sm:text-4xl`}
         >
-          Behind every <span className="italic text-silver">chair</span>
+          Behind every <span className="italic text-foil">chair</span>
         </h3>
 
         <p className="mt-4 text-[13px] leading-6 text-oc-cream-50/55 sm:text-sm">
@@ -791,7 +791,7 @@ export function OurStars() {
       <section
         id="stars"
         aria-labelledby="stars-heading"
-        className="relative isolate overflow-hidden bg-[linear-gradient(180deg,#0f1e33_0%,#0c1421_55%,#12161d_100%)] px-6 py-24 text-oc-cream-50 sm:px-10 sm:py-28 lg:py-32"
+        className="relative isolate overflow-hidden border-y border-oc-gold-300/15 bg-[linear-gradient(180deg,#0d2140_0%,#0a1a33_55%,#0d1522_100%)] px-6 py-24 text-oc-cream-50 sm:px-10 sm:py-28 lg:py-32"
       >
         <Background animated={!reduceMotion} />
 

@@ -114,6 +114,12 @@ export function Hero() {
           CONTENT
       ========================================================= */}
 
+      {/* Atmospheric light: cool sapphire bloom behind the heading, faint champagne glow bottom-right */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(55%_60%_at_18%_45%,rgba(74,106,154,0.38),transparent_70%),radial-gradient(35%_40%_at_85%_88%,rgba(216,194,148,0.16),transparent)]"
+      />
+
       <div className="relative mx-auto flex min-h-[720px] w-full max-w-7xl items-center px-6 pb-20 pt-28 sm:min-h-[780px] sm:px-10 sm:pb-24 sm:pt-32 lg:min-h-screen lg:px-10">
         <div className="w-full max-w-[590px]">
           {/* =====================================================
@@ -148,7 +154,7 @@ export function Hero() {
               xl:text-[74px]
             "
           >
-            <span className="italic text-silver">
+            <span className="italic text-foil">
               COME IN
             </span>
 
@@ -231,7 +237,7 @@ export function Hero() {
                 items-center
                 gap-3
                 rounded-full
-                bg-silver
+                bg-foil
                 px-6
                 text-[10px]
                 font-semibold

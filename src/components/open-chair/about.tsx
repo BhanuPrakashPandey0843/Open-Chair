@@ -56,7 +56,7 @@ export function About() {
         relative
         isolate
         overflow-hidden
-        bg-gradient-to-b from-[#f9fbfd] via-oc-cream-50 to-[#e8eef5]
+        bg-gradient-to-b from-[#fcfbf8] via-[#f8f6f1] to-[#f0ede5]
         px-6
         py-20
         text-oc-ink-900
@@ -102,7 +102,7 @@ export function About() {
             top-1/4
             size-[420px]
             rounded-full
-            bg-oc-maroon-700/[0.13]
+            bg-oc-gold-500/[0.16]
             blur-[120px]
           "
           animate={{
@@ -708,7 +708,7 @@ export function About() {
           max-w-5xl
           bg-gradient-to-r
           from-transparent
-          via-oc-maroon-900/10
+          via-oc-gold-500/45
           to-transparent
         "
       />

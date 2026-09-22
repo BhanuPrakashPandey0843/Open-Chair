@@ -47,7 +47,7 @@ export function Advantage() {
         relative
         isolate
         overflow-hidden
-        bg-[linear-gradient(180deg,#0f1e33_0%,#0b1626_58%,#10151d_100%)]
+        border-y border-oc-gold-300/15 bg-[linear-gradient(180deg,#0d2140_0%,#0a1a33_55%,#0d1522_100%)]
         px-6
         py-24
         text-oc-cream-50
@@ -107,7 +107,7 @@ export function Advantage() {
             bottom-0
             size-[420px]
             rounded-full
-            bg-oc-maroon-700/[0.20]
+            bg-oc-gold-500/[0.16]
             blur-[130px]
           "
           animate={{
@@ -156,7 +156,7 @@ export function Advantage() {
             "
           >
             The Open Chair{" "}
-            <span className="italic text-silver">advantage</span>
+            <span className="italic text-foil">advantage</span>
           </h2>
 
           <p className="mt-4 max-w-lg text-[13px] leading-6 text-oc-cream-50/55 sm:text-sm">
@@ -266,7 +266,7 @@ export function Advantage() {
           max-w-5xl
           bg-gradient-to-r
           from-transparent
-          via-oc-cream-50/10
+          via-oc-gold-300/35
           to-transparent
         "
       />

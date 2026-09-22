@@ -179,7 +179,7 @@ export function Services() {
         relative
         isolate
         overflow-hidden
-        bg-gradient-to-b from-[#f9fbfd] via-oc-cream-50 to-[#e8eef5]
+        bg-gradient-to-b from-[#fcfbf8] via-[#f8f6f1] to-[#f0ede5]
         px-6
         py-24
         text-oc-ink-900
@@ -224,7 +224,7 @@ export function Services() {
             top-20
             size-[460px]
             rounded-full
-            bg-oc-maroon-700/[0.13]
+            bg-oc-gold-500/[0.16]
             blur-[120px]
           "
           animate={{
@@ -329,7 +329,7 @@ export function Services() {
             </span>
           </h2>
 
-          <p className="mt-4 max-w-lg text-[13px] leading-6 text-oc-ink-900/50 sm:text-sm">
+          <p className="mt-4 max-w-lg text-[13px] leading-6 text-oc-ink-900/62 sm:text-sm">
             Barbershop precision and salon craft, under one roof —
             every price, plainly stated, no surprises in the chair.
           </p>
@@ -405,8 +405,8 @@ export function Services() {
                   overflow-hidden
                   rounded-[22px]
                   border
-                  border-oc-maroon-900/[0.08]
-                  bg-white/80
+                  border-oc-gold-500/30
+                  bg-white/90
                   shadow-[0_3px_12px_rgba(15,30,51,0.05)]
                   backdrop-blur-sm
                   transition-shadow
@@ -565,7 +565,7 @@ export function Services() {
                   </h3>
 
                   {/* Description */}
-                  <p className="mt-2.5 min-h-[55px] text-[12px] leading-[1.7] text-oc-ink-900/50">
+                  <p className="mt-2.5 min-h-[55px] text-[12px] leading-[1.7] text-oc-ink-900/62">
                     {service.description}
                   </p>
 
@@ -717,7 +717,7 @@ export function Services() {
               gap-1
               rounded-full
               border
-              border-oc-maroon-900/10
+              border-oc-gold-500/35
               bg-white/70
               p-1.5
               shadow-[0_3px_12px_rgba(15,30,51,0.06)]
@@ -783,8 +783,8 @@ export function Services() {
               className={`
                 rounded-[20px]
                 border
-                border-oc-maroon-900/[0.08]
-                bg-white/80
+                border-oc-gold-500/30
+                bg-white/90
                 p-6
                 shadow-[0_3px_12px_rgba(15,30,51,0.05)]
                 backdrop-blur-sm

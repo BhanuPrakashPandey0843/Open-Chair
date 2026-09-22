@@ -64,21 +64,24 @@
      Token names are kept from the previous theme so every component
      picks up the new colours automatically:
        oc-maroon-*  -> navy / blue family  (950 deepest ... 700 lightest)
-       oc-gold-*    -> silver / steel-blue accents
-       oc-cream-50  -> cool porcelain page background
-       oc-mist-100  -> soft grey-blue alternate section background
+       oc-gold-*    -> champagne-metal accent (the ONLY colour outside the client's
+                       five). To revert to pure silver/blue, set 600 #3d5d8d,
+                       500 #4a6a9a, 300 #d9d9d9, 200 #bfd1ea and switch the
+                       .text-foil / .bg-foil gradients below to silver.
+       oc-cream-50  -> warm pearl page background
+       oc-mist-100  -> warm greige alternate section background
        oc-ink-900   -> charcoal
   */
   --oc-maroon-950: #0f1e33; /* deep navy (darkest shade of Primary Blue) */
   --oc-maroon-900: #1e3a5f; /* Primary Blue   */
   --oc-maroon-800: #2f4f78; /* Secondary Blue */
   --oc-maroon-700: #4a6a9a; /* Light Blue     */
-  --oc-gold-600: #3d5d8d;   /* steel blue — eyebrows & accents on light */
-  --oc-gold-500: #4a6a9a;   /* Light Blue accent on light backgrounds   */
-  --oc-gold-300: #d9d9d9;   /* Soft Gray — accent on dark backgrounds   */
-  --oc-gold-200: #bfd1ea;   /* ice blue — italic highlights on dark     */
-  --oc-cream-50: #f4f6f9;   /* porcelain page background                */
-  --oc-mist-100: #e3e9f1;   /* soft gray-blue alternate section         */
+  --oc-gold-600: #7a5c26;   /* bronze — eyebrows & accents on light   */
+  --oc-gold-500: #b8934f;   /* champagne — stars, ticks, hairlines     */
+  --oc-gold-300: #d8c294;   /* light champagne — accent on dark        */
+  --oc-gold-200: #efe0bb;   /* pale champagne — hovers & highlights    */
+  --oc-cream-50: #f8f6f1;   /* warm pearl page background                */
+  --oc-mist-100: #ece9e1;   /* warm greige alternate section         */
   --oc-ink-900: #2b2b2b;    /* Charcoal */
 
   --background: var(--oc-cream-50);
@@ -96,8 +99,8 @@
   --accent: var(--oc-mist-100);
   --accent-foreground: var(--oc-maroon-900);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: var(--oc-gold-300);
-  --input: var(--oc-gold-300);
+  --border: #d9d9d9;
+  --input: #d9d9d9;
   --ring: var(--oc-maroon-700);
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
@@ -189,9 +192,9 @@
 }
 
 @layer utilities {
-  /* ---- Premium finishes: silver + sapphire (palette-only, no gold) ---- */
-  .text-silver {
-    background-image: linear-gradient(180deg, #ffffff 0%, #e6eefa 42%, #a9bfdf 100%);
+  /* ---- Premium finishes: champagne foil + sapphire ---- */
+  .text-foil {
+    background-image: linear-gradient(180deg, #fff8e6 0%, #efdcae 36%, #cfae6c 76%, #ad8949 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -206,12 +209,12 @@
     -webkit-text-fill-color: transparent;
   }
 
-  .bg-silver {
-    background-color: #d9d9d9;
-    background-image: linear-gradient(180deg, #fafbfd 0%, #dfe2e7 52%, #b8c1ce 100%);
+  .bg-foil {
+    background-color: #d5b878;
+    background-image: linear-gradient(180deg, #f8ebc8 0%, #e2ca92 50%, #c4a15f 100%);
   }
-  .bg-silver:hover {
-    background-image: linear-gradient(180deg, #ffffff 0%, #eaeff6 52%, #c9d6ea 100%);
+  .bg-foil:hover {
+    background-image: linear-gradient(180deg, #fff4d6 0%, #eed8a3 50%, #d3b273 100%);
   }
 
   .bg-sapphire {

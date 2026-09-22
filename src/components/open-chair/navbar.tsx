@@ -44,7 +44,7 @@ export function Navbar() {
         fixed inset-x-0 top-0 z-50
         transition-all duration-500
         ${isSolid
-          ? "border-b border-oc-maroon-900/[0.08] bg-oc-cream-50/90 backdrop-blur-md"
+          ? "border-b border-oc-gold-500/35 bg-oc-cream-50/90 backdrop-blur-md"
           : "border-b border-white/0 bg-transparent"}
       `}
     >
@@ -132,7 +132,7 @@ export function Navbar() {
             transition-all duration-300 lg:inline-flex
             ${isSolid
               ? "bg-sapphire text-oc-cream-50"
-              : "bg-silver text-oc-maroon-900"}
+              : "bg-foil text-oc-maroon-900"}
           `}
         >
           BOOK NOW

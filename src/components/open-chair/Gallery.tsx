@@ -484,7 +484,7 @@ export function Gallery() {
               className="mt-4 font-[family-name:var(--font-display)] text-4xl leading-[1.05] font-medium tracking-[-0.025em] text-white sm:text-6xl"
             >
               Step inside{" "}
-              <span className="italic text-silver">Open Chair</span>
+              <span className="italic text-foil">Open Chair</span>
             </motion.h2>
 
             <motion.a
@@ -510,7 +510,7 @@ export function Gallery() {
       ========================================================= */}
       <section
         id="gallery"
-        className="group/gallery relative isolate overflow-hidden bg-gradient-to-b from-[#f9fbfd] via-oc-cream-50 to-oc-cream-50 px-6 py-24 text-oc-ink-900 sm:px-10 sm:py-28 lg:py-32"
+        className="group/gallery relative isolate overflow-hidden bg-gradient-to-b from-[#f0ede5] via-[#f8f6f1] to-[#fcfbf8] px-6 py-24 text-oc-ink-900 sm:px-10 sm:py-28 lg:py-32"
       >
         {/* Background texture */}
         <div aria-hidden="true" className="pointer-events-none absolute inset-0">
@@ -527,7 +527,7 @@ export function Gallery() {
           />
 
           <motion.div
-            className="absolute -left-48 top-10 size-[420px] rounded-full bg-oc-maroon-700/[0.13] blur-[110px]"
+            className="absolute -left-48 top-10 size-[420px] rounded-full bg-oc-gold-500/[0.16] blur-[110px]"
             animate={{ x: [0, 25, 0], y: [0, -15, 0] }}
             transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
           />
@@ -550,7 +550,7 @@ export function Gallery() {
           >
             <div className="flex items-center gap-3">
               <span className="h-px w-7 bg-oc-gold-500/50" />
-              <p className="text-[9px] font-semibold uppercase tracking-[0.25em] text-oc-gold-500">
+              <p className="text-[9px] font-semibold uppercase tracking-[0.25em] text-oc-gold-600">
                 The Open Chair Journal
               </p>
               <span className="h-px w-7 bg-oc-gold-500/50" />
@@ -560,7 +560,7 @@ export function Gallery() {
               Our <span className="text-sapphire italic">Gallery</span>
             </h2>
 
-            <p className="mt-4 max-w-md text-[13px] leading-6 text-oc-ink-900/50 sm:text-sm">
+            <p className="mt-4 max-w-md text-[13px] leading-6 text-oc-ink-900/62 sm:text-sm">
               Real cuts, real clients, real chairs — every photo here
               was taken on our floor, not a stock shelf.
             </p>

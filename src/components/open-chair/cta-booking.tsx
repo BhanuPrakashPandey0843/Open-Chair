@@ -54,7 +54,7 @@ export function CtaBooking() {
           </p>
           <h2 className="max-w-md font-[family-name:var(--font-display)] text-4xl leading-[1.1] font-medium tracking-tight text-balance sm:text-5xl">
             Claim your{" "}
-            <span className="text-silver italic">open chair</span>{" "}
+            <span className="text-foil italic">open chair</span>{" "}
             today
           </h2>
           <p className="mt-5 max-w-sm text-[15px] leading-relaxed text-oc-cream-50/70">
@@ -94,7 +94,7 @@ export function CtaBooking() {
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
-          className="relative mx-auto w-full max-w-sm rounded-3xl bg-oc-cream-50 p-8 text-oc-ink-900 shadow-[0_30px_60px_-20px_rgba(0,0,0,0.45)] sm:p-9"
+          className="relative mx-auto w-full max-w-sm rounded-3xl bg-oc-cream-50 ring-1 ring-oc-gold-300/70 p-8 text-oc-ink-900 shadow-[0_30px_60px_-20px_rgba(0,0,0,0.45)] sm:p-9"
         >
           <p className="text-xs font-semibold tracking-[0.18em] text-oc-maroon-700 uppercase">
             Online Booking

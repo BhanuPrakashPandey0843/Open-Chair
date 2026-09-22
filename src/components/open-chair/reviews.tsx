@@ -151,8 +151,8 @@ function MarqueeCard({ testimonial }: { testimonial: Testimonial }) {
         overflow-hidden
         rounded-[20px]
         border
-        border-oc-maroon-900/[0.08]
-        bg-white/80
+        border-oc-gold-500/30
+        bg-white/90
         p-6
         shadow-[0_2px_8px_rgba(15,30,51,0.05)]
         backdrop-blur-sm
@@ -322,7 +322,7 @@ export function Reviews() {
             top-20
             size-[420px]
             rounded-full
-            bg-oc-maroon-700/[0.16]
+            bg-oc-gold-500/[0.18]
             blur-[100px]
           "
           animate={{
@@ -423,7 +423,7 @@ export function Reviews() {
             </span>
           </h2>
 
-          <p className="mt-5 max-w-md text-center text-[14px] leading-6 text-oc-ink-900/50">
+          <p className="mt-5 max-w-md text-center text-[14px] leading-6 text-oc-ink-900/62">
             Real words from the chairs that came before yours.
           </p>
         </motion.div>
