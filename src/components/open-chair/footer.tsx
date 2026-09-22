@@ -241,7 +241,7 @@ export function Footer() {
             </a>
 
             <p className="mt-6 max-w-[32ch] text-[14px] leading-7 text-white/45">
-              Skilled hands, unhurried appointments, and a chair that&apos;s
+              Skilled hands, no appointments, and a chair that&apos;s
               always open when you need it.
             </p>
 
