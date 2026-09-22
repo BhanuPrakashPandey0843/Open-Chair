@@ -69,7 +69,7 @@ type TeamMember = {
 
 const FOUNDERS: readonly [Founder, Founder] = [
   {
-    name: "NAVEED PASHA",
+    name: "Danny Pasha",
     image: naveedPortrait,
     objectPosition: "50% 40%",
   },
