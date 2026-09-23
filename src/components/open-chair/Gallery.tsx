@@ -63,6 +63,12 @@ import imgY from "@/assets/images/y.jpeg";
 import imgZ from "@/assets/images/z.jpeg";
 import imgWhatsapp1 from "@/assets/images/WhatsApp Image 2026-09-15 at 8.18.01 PM.jpeg";
 
+import newsGallery4 from "@/assets/news/Galary 4 (1).jpeg";
+import newsGallery1 from "@/assets/news/Gallary 1.jpeg";
+import newsGallery3 from "@/assets/news/Gallary 3.jpeg";
+import newsKids1 from "@/assets/news/Kids 1.jpeg";
+import newsKids2 from "@/assets/news/Kids2.jpeg";
+
 const MAPS_HREF = "https://maps.app.goo.gl/EbtKfvNmXtoGFZmH9?g_st=ac";
 
 type Category = "space" | "craft" | "results" | "team" | "lounge";
@@ -312,6 +318,18 @@ const GALLERY_ITEMS: GalleryItem[] = [
     title: "Fresh Out The Chair",
     category: "results",
   },
+  {
+    src: newsKids1.src,
+    alt: "A child's fresh haircut at Open Chair",
+    title: "Fresh Start",
+    category: "results",
+  },
+  {
+    src: newsKids2.src,
+    alt: "A child showing off a finished haircut at Open Chair",
+    title: "Little Chair, Big Style",
+    category: "results",
+  },
 
   // ---- Faces (team + candid clients) -------------------------
   {
@@ -349,6 +367,24 @@ const GALLERY_ITEMS: GalleryItem[] = [
     src: imgWhatsapp1.src,
     alt: "A crew cut client with the lounge in the background",
     title: "Sharp & Settled",
+    category: "team",
+  },
+  {
+    src: newsGallery1.src,
+    alt: "An Open Chair client after a fresh haircut",
+    title: "Fresh From The Chair",
+    category: "team",
+  },
+  {
+    src: newsGallery3.src,
+    alt: "A client enjoying the Open Chair experience",
+    title: "Good Energy",
+    category: "team",
+  },
+  {
+    src: newsGallery4.src,
+    alt: "A finished Open Chair haircut",
+    title: "The Finished Look",
     category: "team",
   },
 

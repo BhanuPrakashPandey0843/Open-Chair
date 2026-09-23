@@ -155,6 +155,36 @@ function Eyebrow({ children }: { children: ReactNode }) {
   );
 }
 
+/** A thin beam of light that sweeps across its children on a loop — a subtle "shine". */
+function ShineSweep({
+  children,
+  className = "",
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
+  const reduceMotion = useReducedMotion();
+
+  return (
+    <span className={`relative inline-block overflow-hidden ${className}`}>
+      <span className="relative z-10">{children}</span>
+      {!reduceMotion && (
+        <motion.span
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-y-0 left-0 z-20 w-1/4 -skew-x-[20deg] bg-gradient-to-r from-transparent via-white/70 to-transparent mix-blend-overlay"
+          animate={{ x: ["-160%", "360%"] }}
+          transition={{
+            duration: 2.8,
+            repeat: Infinity,
+            repeatDelay: 3.2,
+            ease: "easeInOut",
+          }}
+        />
+      )}
+    </span>
+  );
+}
+
 /** Counts from 00 to `value` once `run` flips true. No React re-renders. */
 function CountUp({
   value,
@@ -303,7 +333,7 @@ function SectionHeader() {
         id="stars-heading"
         className={`${DISPLAY} mt-4 text-4xl font-medium leading-[1.05] tracking-[-0.03em] sm:text-5xl`}
       >
-        Our <span className="italic text-foil">Stars</span>
+        Our <ShineSweep className="italic text-foil">Stars</ShineSweep>
       </h2>
 
       <p className="mt-4 max-w-lg text-[13px] leading-6 text-oc-cream-50/55 sm:text-sm">
@@ -641,11 +671,11 @@ function TeamPanel({ member, index, active, stageId, onActivate }: TeamPanelProp
       {/* ---------------- Mobile / tablet: full card content ---------------- */}
       <div className="flex flex-1 flex-col p-6 sm:p-7 lg:hidden">
         <p className={EYEBROW}>{member.role}</p>
-        <h4
+        <h3
           className={`${DISPLAY} mt-2 text-[2rem] leading-none tracking-[-0.02em] text-oc-cream-50`}
         >
           {member.name}
-        </h4>
+        </h3>
 
         <div className="mt-5">
           <YearsStat years={member.years} label={member.yearsLabel} />
@@ -698,11 +728,11 @@ function TeamStage({ member, stageId }: { member: TeamMember; stageId: string })
           </div>
 
           <div className="col-span-6 border-x border-oc-gold-300/10 px-10">
-            <h4
+            <h3
               className={`${DISPLAY} text-3xl leading-none tracking-[-0.02em] text-oc-cream-50`}
             >
               {member.name}
-            </h4>
+            </h3>
             <p className="mt-4 text-sm leading-[1.8] text-oc-cream-50/65">
               {member.bio}
             </p>
@@ -723,34 +753,76 @@ function TeamShowcase() {
   const stageId = useId();
   const combinedYears = TEAM.reduce((sum, member) => sum + member.years, 0);
 
+  const introRef = useRef<HTMLDivElement>(null);
+  const reduceMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll({
+    target: introRef,
+    offset: ["start end", "end start"],
+  });
+  const wordmarkX = useTransform(
+    scrollYProgress,
+    [0, 1],
+    reduceMotion ? [0, 0] : [-60, 60],
+  );
+  const wordmarkOpacity = useTransform(
+    scrollYProgress,
+    [0, 0.5, 1],
+    [0.35, 0.85, 0.35],
+  );
+  const badgeFloat = useTransform(
+    scrollYProgress,
+    [0, 1],
+    reduceMotion ? [0, 0] : [14, -14],
+  );
+
   return (
-    <div className="mt-24 sm:mt-28">
-      {/* Bridge from the founders' story into the team */}
-      <motion.div
-        initial={{ opacity: 0, y: 22 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-80px" }}
-        transition={{ duration: 0.7, ease: EASE }}
-        className="mx-auto flex max-w-xl flex-col items-center text-center"
-      >
-        <Eyebrow>The Team</Eyebrow>
-
-        <h3
-          className={`${DISPLAY} mt-4 text-3xl font-medium leading-[1.08] tracking-[-0.03em] sm:text-4xl`}
+    <div>
+      {/* Opening beat — scroll-linked wordmark drifting behind the intro */}
+      <div ref={introRef} className="relative">
+        <motion.div
+          aria-hidden="true"
+          style={{ x: wordmarkX, opacity: wordmarkOpacity }}
+          className={`${DISPLAY} pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 select-none whitespace-nowrap text-center text-[clamp(4rem,15vw,13rem)] font-medium leading-none tracking-[-0.04em] text-transparent [-webkit-text-stroke:1px_rgba(217,217,217,0.08)]`}
         >
-          Behind every <span className="italic text-foil">chair</span>
-        </h3>
+          THE TEAM
+        </motion.div>
 
-        <p className="mt-4 text-[13px] leading-6 text-oc-cream-50/55 sm:text-sm">
-          This is the story we began with. And the team you’re about to meet is
-          the reason it works.
-        </p>
+        <motion.div
+          initial={{ opacity: 0, y: 22 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7, ease: EASE }}
+          className="relative mx-auto flex max-w-xl flex-col items-center text-center"
+        >
+          <Eyebrow>The Team</Eyebrow>
 
-        <p className="mt-5 inline-flex items-center gap-2 rounded-full border border-oc-gold-300/20 bg-oc-gold-300/[0.05] px-4 py-2 text-[9px] font-semibold uppercase tracking-[0.18em] text-oc-gold-200">
-          <Sparkles className="size-3" strokeWidth={1.5} aria-hidden="true" />
-          {combinedYears} years of combined craft
-        </p>
-      </motion.div>
+          <h2
+            className={`${DISPLAY} mt-4 text-3xl font-medium leading-[1.08] tracking-[-0.03em] sm:text-4xl`}
+          >
+            Behind every <ShineSweep className="italic text-foil">chair</ShineSweep>
+          </h2>
+
+          <p className="mt-4 max-w-lg text-[13px] leading-6 text-oc-cream-50/55 sm:text-sm">
+            Meet the hands, the craft, and the care behind every visit — the
+            people who make Open Chair feel like Open Chair.
+          </p>
+
+          <motion.p
+            style={{ y: badgeFloat }}
+            whileHover={reduceMotion ? undefined : { scale: 1.06 }}
+            className="mt-5 inline-flex cursor-default items-center gap-2 rounded-full border border-oc-gold-300/20 bg-oc-gold-300/[0.05] px-4 py-2 text-[9px] font-semibold uppercase tracking-[0.18em] text-oc-gold-200 transition-colors duration-300 hover:border-oc-gold-300/45 hover:bg-oc-gold-300/[0.1]"
+          >
+            <motion.span
+              whileHover={reduceMotion ? undefined : { rotate: 20, scale: 1.15 }}
+              transition={{ duration: 0.3, ease: EASE }}
+              className="inline-flex"
+            >
+              <Sparkles className="size-3" strokeWidth={1.5} aria-hidden="true" />
+            </motion.span>
+            {combinedYears} years of combined craft
+          </motion.p>
+        </motion.div>
+      </div>
 
       <ul
         role="list"
@@ -796,9 +868,13 @@ export function OurStars() {
         <Background animated={!reduceMotion} />
 
         <div className="relative mx-auto w-full max-w-7xl">
-          <SectionHeader />
-          <FoundersStory />
           <TeamShowcase />
+
+          <div className="mt-24 sm:mt-28">
+            <SectionHeader />
+          </div>
+
+          <FoundersStory />
 
           {/* Closing note */}
           <motion.div

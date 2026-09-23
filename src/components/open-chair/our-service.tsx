@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image, { type StaticImageData } from "next/image";
 import { motion } from "motion/react";
 import {
   ArrowUpRight,
@@ -15,6 +16,7 @@ import {
 } from "lucide-react";
 
 import shot1 from "@/assets/IMG_20260903_204142.jpg.jpeg";
+import haircutPhoto from "@/assets/news/ones.jpeg";
 import husseinPortrait from "@/assets/baarber/Barber Hussien.jpeg";
 import anmolPortrait from "@/assets/baarber/Barber Anmol.jpeg";
 import meganPortrait from "@/assets/baarber/Megan Profile Pic.png";
@@ -28,14 +30,14 @@ type FeaturedService = {
   title: string;
   description: string;
   price: string;
-  image: string;
+  image: StaticImageData;
   imagePosition?: string;
   icon: typeof Sparkles;
   tag: "Barbershop" | "Salon";
   featured?: boolean;
   /** First name of the barber/stylist shown performing this service. */
   stylist?: string;
-  stylistImage?: string;
+  stylistImage?: StaticImageData;
 };
 
 const FEATURED_SERVICES: FeaturedService[] = [
@@ -44,44 +46,44 @@ const FEATURED_SERVICES: FeaturedService[] = [
     description:
       "A precision cut, shaped and finished exactly the way you like it — the Open Chair everyday essential.",
     price: "25",
-    image: husseinPortrait.src,
+    image: haircutPhoto,
     imagePosition: "50% 14%",
     icon: Scissors,
     tag: "Barbershop",
     stylist: "Hussein",
-    stylistImage: husseinPortrait.src,
+    stylistImage: husseinPortrait,
   },
   {
     title: "Haircut & Beard Trim",
     description:
       "A clean cut paired with a sharp beard shape-up — the classic Open Chair combo.",
     price: "40",
-    image: anmolPortrait.src,
+    image: anmolPortrait,
     imagePosition: "50% 11%",
     icon: Flame,
     tag: "Barbershop",
     featured: true,
     stylist: "Anmol",
-    stylistImage: anmolPortrait.src,
+    stylistImage: anmolPortrait,
   },
   {
     title: "Senior Haircut",
     description:
       "An unhurried, comfortable cut for our senior clients, handled with a patient, steady hand.",
     price: "20",
-    image: meganPortrait.src,
+    image: meganPortrait,
     imagePosition: "50% 20%",
     icon: Crown,
     tag: "Barbershop",
     stylist: "Megan",
-    stylistImage: meganPortrait.src,
+    stylistImage: meganPortrait,
   },
   {
     title: "Kids' Haircut",
     description:
       "A quick, friendly cut for our youngest clients, aged 12 and under — patient, gentle, fuss-free.",
     price: "20",
-    image: shot1.src,
+    image: shot1,
     icon: Baby,
     tag: "Barbershop",
   },
@@ -229,11 +231,13 @@ export function Services() {
   return (
     <section
       id="services"
+      aria-labelledby="services-heading"
       className="
         group/services
         relative
         isolate
         overflow-hidden
+        scroll-mt-24
         bg-gradient-to-b from-[#fcfbf8] via-[#f8f6f1] to-[#f0ede5]
         px-6
         py-24
@@ -368,6 +372,7 @@ export function Services() {
 
           {/* Heading */}
           <h2
+            id="services-heading"
             className="
               mt-4
               font-[family-name:var(--font-display)]
@@ -388,6 +393,16 @@ export function Services() {
             Barbershop precision and salon craft, under one roof —
             every price, plainly stated, no surprises in the chair.
           </p>
+
+          <a
+            href={BOOKING_HREF}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-6 inline-flex items-center gap-2 rounded-full bg-sapphire px-5 py-2.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-oc-cream-50 shadow-[0_10px_24px_rgba(30,58,95,0.16)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_14px_30px_rgba(30,58,95,0.24)] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-oc-gold-500"
+          >
+            Reserve your chair
+            <ArrowUpRight className="size-3.5" strokeWidth={1.75} aria-hidden="true" />
+          </a>
         </motion.div>
 
         {/* =======================================================
@@ -454,33 +469,41 @@ export function Services() {
                 whileHover={{
                   y: -6,
                 }}
-                className="
+                className={`
                   group/card
                   relative
                   overflow-hidden
-                  rounded-[22px]
+                  rounded-[24px]
                   border
-                  border-oc-gold-500/30
+                  border-oc-gold-500/25
                   bg-white/90
                   shadow-[0_3px_12px_rgba(15,30,51,0.05)]
                   backdrop-blur-sm
                   transition-shadow
                   duration-500
                   hover:shadow-[0_28px_65px_-30px_rgba(15,30,51,0.28)]
-                "
+                  ${
+                    service.featured
+                      ? "border-oc-gold-500/60 shadow-[0_18px_45px_-24px_rgba(184,147,79,0.55)] lg:-translate-y-5"
+                      : ""
+                  }
+                  lg:[&:nth-child(2)]:-translate-y-5
+                `}
               >
                 {/* =================================================
                     IMAGE
                 ================================================= */}
-                <div className="relative aspect-[1.1/1] overflow-hidden">
-                  <img
+                <div className="relative aspect-[1.05/1] overflow-hidden sm:aspect-[1.1/1]">
+                  <Image
                     src={service.image}
                     alt={
                       service.stylist
                         ? `${service.stylist} performing the ${service.title} service at Open Chair`
                         : service.title
                     }
-                    loading={index < 3 ? "eager" : "lazy"}
+                    fill
+                    priority={index < 2}
+                    sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
                     style={
                       service.imagePosition
                         ? { objectPosition: service.imagePosition }
@@ -587,7 +610,7 @@ export function Services() {
                   </motion.div>
 
                   {/* Stylist chip — who performs this service */}
-                  {service.stylist && (
+                  {service.stylist && service.stylistImage && (
                     <div
                       className="
                         absolute
@@ -611,16 +634,13 @@ export function Services() {
                       "
                     >
                       <span className="relative size-6 shrink-0 overflow-hidden rounded-full border border-white/40">
-                        <img
+                        <Image
                           src={service.stylistImage}
                           alt=""
                           aria-hidden="true"
-                          style={
-                            service.imagePosition
-                              ? { objectPosition: service.imagePosition }
-                              : undefined
-                          }
-                          className="size-full object-cover"
+                          fill
+                          sizes="24px"
+                          className="object-cover"
                         />
                       </span>
 
@@ -657,7 +677,7 @@ export function Services() {
                 {/* =================================================
                     CONTENT
                 ================================================= */}
-                <div className="relative flex flex-col p-5">
+                <div className="relative flex min-h-[190px] flex-col p-5 sm:p-6">
                   {/* Title */}
                   <h3
                     className="
@@ -673,7 +693,7 @@ export function Services() {
                   </h3>
 
                   {/* Description */}
-                  <p className="mt-2.5 min-h-[55px] text-[12px] leading-[1.7] text-oc-ink-900/62">
+                  <p className="mt-2.5 min-h-[66px] text-[12px] leading-[1.7] text-oc-ink-900/62">
                     {service.description}
                   </p>
 
@@ -819,8 +839,12 @@ export function Services() {
           className="mt-20 flex flex-col items-center"
         >
           <div
+            role="tablist"
+            aria-label="Choose a service menu"
             className="
               inline-flex
+              max-w-full
+              overflow-x-auto
               items-center
               gap-1
               rounded-full
@@ -837,9 +861,11 @@ export function Services() {
                 key={id}
                 type="button"
                 onClick={() => setActiveTab(id)}
-                aria-pressed={activeTab === id}
+                role="tab"
+                aria-selected={activeTab === id}
                 className={`
                   relative
+                  shrink-0
                   rounded-full
                   px-5
                   py-2.5
@@ -849,6 +875,9 @@ export function Services() {
                   tracking-[0.14em]
                   transition-colors
                   duration-300
+                  focus-visible:outline-2
+                  focus-visible:outline-offset-2
+                  focus-visible:outline-oc-gold-500
                   ${
                     activeTab === id
                       ? "text-oc-cream-50"
@@ -864,12 +893,11 @@ export function Services() {
                       stiffness: 380,
                       damping: 32,
                     }}
-                    className="absolute inset-0 rounded-full bg-sapphire"
-                    style={{ zIndex: -1 }}
+                    className="absolute inset-0 z-0 rounded-full bg-sapphire"
                   />
                 )}
 
-                {label}
+                <span className="relative z-10">{label}</span>
               </button>
             ))}
           </div>
@@ -910,7 +938,12 @@ export function Services() {
         {/* =======================================================
             PRICE LIST
         ======================================================= */}
-        <div className="mx-auto mt-10 grid max-w-5xl grid-cols-1 gap-5 sm:grid-cols-2">
+        <div
+          id="service-price-list"
+          role="tabpanel"
+          aria-label={`${activeTab === "barbershop" ? "Barbershop" : "Salon"} price list`}
+          className="mx-auto mt-10 grid max-w-5xl grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5"
+        >
           {groups.map((group, groupIndex) => (
             <motion.div
               key={`${activeTab}-${group.title ?? "list"}`}
@@ -935,7 +968,7 @@ export function Services() {
                 border
                 border-oc-gold-500/30
                 bg-white/90
-                p-6
+                p-4 sm:p-6
                 shadow-[0_3px_12px_rgba(15,30,51,0.05)]
                 backdrop-blur-sm
                 ${groups.length === 1 ? "sm:col-span-2" : ""}
@@ -975,6 +1008,7 @@ export function Services() {
                     className={`
                       -mx-2
                       flex
+                      min-w-0
                       items-start
                       justify-between
                       gap-4
@@ -991,14 +1025,14 @@ export function Services() {
                       }
                     `}
                   >
-                    <span className="flex min-w-0 flex-col gap-0.5">
-                      <span className="flex items-start gap-2 text-[13px] leading-5 text-oc-ink-900/80">
+                      <span className="flex min-w-0 flex-col gap-0.5">
+                      <span className="flex min-w-0 items-start gap-2 text-[13px] leading-5 text-oc-ink-900/80">
                         <Check
                           className="mt-0.5 size-3 shrink-0 text-oc-gold-500"
                           strokeWidth={2}
                           aria-hidden="true"
                         />
-                        {item.name}
+                        <span className="min-w-0 break-words">{item.name}</span>
                       </span>
 
                       {item.note && (
