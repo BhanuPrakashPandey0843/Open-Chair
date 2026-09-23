@@ -4,6 +4,8 @@ import { useState } from "react";
 import { motion } from "motion/react";
 import {
   ArrowUpRight,
+  Baby,
+  BadgePercent,
   Check,
   Crown,
   Flame,
@@ -12,10 +14,10 @@ import {
   Sparkles,
 } from "lucide-react";
 
-import aboutMoment from "@/assets/about.jpg";
 import shot1 from "@/assets/IMG_20260903_204142.jpg.jpeg";
-import shot2 from "@/assets/IMG_20260903_204227.jpg.jpeg";
-import shot4 from "@/assets/IMG_20260903_204336.jpg.jpeg";
+import husseinPortrait from "@/assets/baarber/Barber Hussien.jpeg";
+import anmolPortrait from "@/assets/baarber/Barber Anmol.jpeg";
+import meganPortrait from "@/assets/baarber/Megan Profile Pic.png";
 
 /* =============================================================
    REAL MENU DATA — sourced from the printed Barbershop / Salon
@@ -27,47 +29,60 @@ type FeaturedService = {
   description: string;
   price: string;
   image: string;
+  imagePosition?: string;
   icon: typeof Sparkles;
   tag: "Barbershop" | "Salon";
   featured?: boolean;
+  /** First name of the barber/stylist shown performing this service. */
+  stylist?: string;
+  stylistImage?: string;
 };
 
 const FEATURED_SERVICES: FeaturedService[] = [
   {
-    title: "Haircut & Beard",
+    title: "Haircut",
+    description:
+      "A precision cut, shaped and finished exactly the way you like it — the Open Chair everyday essential.",
+    price: "25",
+    image: husseinPortrait.src,
+    imagePosition: "50% 14%",
+    icon: Scissors,
+    tag: "Barbershop",
+    stylist: "Hussein",
+    stylistImage: husseinPortrait.src,
+  },
+  {
+    title: "Haircut & Beard Trim",
     description:
       "A clean cut paired with a sharp beard shape-up — the classic Open Chair combo.",
     price: "40",
-    image: shot2.src,
-    icon: Scissors,
-    tag: "Barbershop",
-  },
-  {
-    title: "Hot Towel, Haircut & Shave",
-    description:
-      "The full ritual: precision haircut, straight-razor shave, and a hot towel finish.",
-    price: "45",
-    image: shot1.src,
+    image: anmolPortrait.src,
+    imagePosition: "50% 11%",
     icon: Flame,
     tag: "Barbershop",
     featured: true,
+    stylist: "Anmol",
+    stylistImage: anmolPortrait.src,
   },
   {
-    title: "Full Colour, Cut & Style",
+    title: "Senior Haircut",
     description:
-      "Rich, all-over colour finished with a cut and blowout styled to you.",
-    price: "145",
-    image: shot4.src,
-    icon: Sparkles,
-    tag: "Salon",
-  },
-  {
-    title: "Premium Service",
-    description:
-      "Our top-tier barbershop package — cut, shave, and head massage in one seat.",
-    price: "60",
-    image: aboutMoment.src,
+      "An unhurried, comfortable cut for our senior clients, handled with a patient, steady hand.",
+    price: "20",
+    image: meganPortrait.src,
+    imagePosition: "50% 20%",
     icon: Crown,
+    tag: "Barbershop",
+    stylist: "Megan",
+    stylistImage: meganPortrait.src,
+  },
+  {
+    title: "Kids' Haircut",
+    description:
+      "A quick, friendly cut for our youngest clients, aged 12 and under — patient, gentle, fuss-free.",
+    price: "20",
+    image: shot1.src,
+    icon: Baby,
     tag: "Barbershop",
   },
 ];
@@ -75,7 +90,11 @@ const FEATURED_SERVICES: FeaturedService[] = [
 type PriceItem = {
   name: string;
   price?: string;
+  /** Pre-discount price, shown struck through next to the new price. */
+  originalPrice?: string;
   from?: boolean;
+  /** Small muted line under the service name, e.g. "Long or short hair". */
+  note?: string;
 };
 
 type PriceGroup = {
@@ -88,10 +107,10 @@ const BARBERSHOP_GROUPS: PriceGroup[] = [
     items: [
       { name: "Haircut", price: "25" },
       { name: "Zero Fade", price: "30" },
-      { name: "Kids Haircut (12 and Under)", price: "20" },
-      { name: "Senior Cut (60+)", price: "20" },
+      { name: "Kids' Haircut (12 and Under)", price: "20" },
+      { name: "Senior Haircut (60+)", price: "20" },
       { name: "Beard Trim", price: "20" },
-      { name: "Haircut & Beard", price: "40" },
+      { name: "Haircut & Beard Trim", price: "40" },
       { name: "Hot Towel Shave", price: "20" },
       { name: "Hot Towel, Haircut & Shave", price: "45" },
       { name: "Facial", price: "35" },
@@ -106,30 +125,41 @@ const BARBERSHOP_GROUPS: PriceGroup[] = [
   },
 ];
 
+const SALON_DISCOUNT_PERCENT = 15;
+
 const SALON_GROUPS: PriceGroup[] = [
   {
-    title: "Women's Cut",
+    title: "Core Services",
     items: [
-      { name: "Short Hair", price: "39" },
-      { name: "Long Hair", price: "49" },
-    ],
-  },
-  {
-    title: "Women's Wash & Style",
-    items: [
-      { name: "Short Hair", price: "29" },
-      { name: "Long Hair", price: "39" },
+      { name: "Women's Haircut", price: "35", note: "Long or short hair" },
+      { name: "Women's Wash & Style", price: "35" },
     ],
   },
   {
     title: "Colour & Highlight Packages",
     items: [
-      { name: "Roots + Highlights & Style", price: "150", from: true },
-      { name: "Roots + Highlights, Cut & Style", price: "165", from: true },
-      { name: "Full Colour + Highlights & Style", price: "165", from: true },
+      {
+        name: "Roots + Highlights & Style",
+        price: "128",
+        originalPrice: "150",
+        from: true,
+      },
+      {
+        name: "Roots + Highlights, Cut & Style",
+        price: "140",
+        originalPrice: "165",
+        from: true,
+      },
+      {
+        name: "Full Colour + Highlights & Style",
+        price: "140",
+        originalPrice: "165",
+        from: true,
+      },
       {
         name: "Full Colour + Highlights, Cut & Style",
-        price: "180",
+        price: "153",
+        originalPrice: "180",
         from: true,
       },
     ],
@@ -137,25 +167,45 @@ const SALON_GROUPS: PriceGroup[] = [
   {
     title: "Colour Services",
     items: [
-      { name: "Root Touch-Up & Style", price: "100" },
-      { name: "Root Touch-Up, Cut & Style", price: "115" },
-      { name: "Full Colour & Style", price: "130" },
-      { name: "Full Colour, Cut & Style", price: "145" },
+      { name: "Root Touch-Up & Style", price: "85", originalPrice: "100" },
+      { name: "Root Touch-Up, Cut & Style", price: "98", originalPrice: "115" },
+      { name: "Full Colour & Style", price: "111", originalPrice: "130" },
+      { name: "Full Colour, Cut & Style", price: "123", originalPrice: "145" },
     ],
   },
   {
     title: "Highlight Services",
     items: [
-      { name: "½ Highlights & Style", price: "135", from: true },
-      { name: "½ Highlights, Cut & Style", price: "150", from: true },
-      { name: "Full Highlights & Style", price: "165", from: true },
-      { name: "Full Highlights, Cut & Style", price: "180", from: true },
+      {
+        name: "½ Highlights & Style",
+        price: "115",
+        originalPrice: "135",
+        from: true,
+      },
+      {
+        name: "½ Highlights, Cut & Style",
+        price: "128",
+        originalPrice: "150",
+        from: true,
+      },
+      {
+        name: "Full Highlights & Style",
+        price: "140",
+        originalPrice: "165",
+        from: true,
+      },
+      {
+        name: "Full Highlights, Cut & Style",
+        price: "153",
+        originalPrice: "180",
+        from: true,
+      },
     ],
   },
   {
     title: "Specialty Services",
     items: [
-      { name: "Mini Foil Service & Style", price: "99" },
+      { name: "Mini Foil Service & Style", price: "84", originalPrice: "99" },
       { name: "Face Framing (up to 10 foils)" },
     ],
   },
@@ -166,6 +216,11 @@ const PHONE_HREF = "tel:+15193519193";
 const PHONE_DISPLAY = "519-351-9193";
 
 type Tab = "barbershop" | "salon";
+
+const TABS: { id: Tab; label: string }[] = [
+  { id: "barbershop", label: "Barbershop" },
+  { id: "salon", label: "Salon" },
+];
 
 export function Services() {
   const [activeTab, setActiveTab] = useState<Tab>("barbershop");
@@ -420,8 +475,17 @@ export function Services() {
                 <div className="relative aspect-[1.1/1] overflow-hidden">
                   <img
                     src={service.image}
-                    alt={service.title}
+                    alt={
+                      service.stylist
+                        ? `${service.stylist} performing the ${service.title} service at Open Chair`
+                        : service.title
+                    }
                     loading={index < 3 ? "eager" : "lazy"}
+                    style={
+                      service.imagePosition
+                        ? { objectPosition: service.imagePosition }
+                        : undefined
+                    }
                     className="
                       absolute
                       inset-0
@@ -522,13 +586,57 @@ export function Services() {
                     />
                   </motion.div>
 
+                  {/* Stylist chip — who performs this service */}
+                  {service.stylist && (
+                    <div
+                      className="
+                        absolute
+                        bottom-4
+                        left-4
+                        flex
+                        items-center
+                        gap-2
+                        rounded-full
+                        border
+                        border-white/25
+                        bg-black/20
+                        py-1
+                        pl-1
+                        pr-3
+                        backdrop-blur-md
+                        transition-all
+                        duration-500
+                        group-hover/card:border-oc-gold-300/55
+                        group-hover/card:bg-black/35
+                      "
+                    >
+                      <span className="relative size-6 shrink-0 overflow-hidden rounded-full border border-white/40">
+                        <img
+                          src={service.stylistImage}
+                          alt=""
+                          aria-hidden="true"
+                          style={
+                            service.imagePosition
+                              ? { objectPosition: service.imagePosition }
+                              : undefined
+                          }
+                          className="size-full object-cover"
+                        />
+                      </span>
+
+                      <span className="text-[8px] font-semibold uppercase tracking-[0.15em] text-white/90">
+                        With {service.stylist}
+                      </span>
+                    </div>
+                  )}
+
                   {/* Featured badge */}
                   {service.featured && (
                     <div
                       className="
                         absolute
                         bottom-4
-                        left-4
+                        right-4
                         rounded-full
                         bg-oc-gold-300
                         px-3
@@ -724,11 +832,12 @@ export function Services() {
               backdrop-blur-sm
             "
           >
-            {(["barbershop", "salon"] as const).map((tab) => (
+            {TABS.map(({ id, label }) => (
               <button
-                key={tab}
+                key={id}
                 type="button"
-                onClick={() => setActiveTab(tab)}
+                onClick={() => setActiveTab(id)}
+                aria-pressed={activeTab === id}
                 className={`
                   relative
                   rounded-full
@@ -741,13 +850,26 @@ export function Services() {
                   transition-colors
                   duration-300
                   ${
-                    activeTab === tab
-                      ? "bg-sapphire text-oc-cream-50"
+                    activeTab === id
+                      ? "text-oc-cream-50"
                       : "text-oc-ink-900/50 hover:text-oc-ink-900/80"
                   }
                 `}
               >
-                {tab === "barbershop" ? "Barbershop" : "Salon"}
+                {activeTab === id && (
+                  <motion.span
+                    layoutId="services-tab-pill"
+                    transition={{
+                      type: "spring",
+                      stiffness: 380,
+                      damping: 32,
+                    }}
+                    className="absolute inset-0 rounded-full bg-sapphire"
+                    style={{ zIndex: -1 }}
+                  />
+                )}
+
+                {label}
               </button>
             ))}
           </div>
@@ -755,6 +877,34 @@ export function Services() {
           <h3 className="mt-8 font-[family-name:var(--font-display)] text-2xl font-medium text-oc-ink-900 sm:text-3xl">
             {activeTab === "barbershop" ? "Barbershop Services" : "Salon Services"}
           </h3>
+
+          {activeTab === "salon" && (
+            <motion.p
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.45, delay: 0.05 }}
+              className="
+                mt-4
+                inline-flex
+                items-center
+                gap-2
+                rounded-full
+                border
+                border-oc-gold-500/30
+                bg-oc-gold-500/[0.08]
+                px-4
+                py-2
+                text-[10px]
+                font-semibold
+                uppercase
+                tracking-[0.14em]
+                text-oc-maroon-800
+              "
+            >
+              <Sparkles className="size-3" strokeWidth={1.75} aria-hidden="true" />
+              {SALON_DISCOUNT_PERCENT}% off colour, highlight &amp; specialty services
+            </motion.p>
+          )}
         </motion.div>
 
         {/* =======================================================
@@ -823,11 +973,17 @@ export function Services() {
                   <li
                     key={item.name}
                     className={`
+                      -mx-2
                       flex
                       items-start
                       justify-between
                       gap-4
+                      rounded-lg
+                      px-2
                       py-2.5
+                      transition-colors
+                      duration-300
+                      hover:bg-oc-gold-500/[0.05]
                       ${
                         itemIndex !== group.items.length - 1
                           ? "border-b border-oc-ink-900/[0.06]"
@@ -835,25 +991,70 @@ export function Services() {
                       }
                     `}
                   >
-                    <span className="flex items-start gap-2 text-[13px] leading-5 text-oc-ink-900/80">
-                      <Check
-                        className="mt-0.5 size-3 shrink-0 text-oc-gold-500"
-                        strokeWidth={2}
-                        aria-hidden="true"
-                      />
-                      {item.name}
-                    </span>
+                    <span className="flex min-w-0 flex-col gap-0.5">
+                      <span className="flex items-start gap-2 text-[13px] leading-5 text-oc-ink-900/80">
+                        <Check
+                          className="mt-0.5 size-3 shrink-0 text-oc-gold-500"
+                          strokeWidth={2}
+                          aria-hidden="true"
+                        />
+                        {item.name}
+                      </span>
 
-                    <span className="flex shrink-0 items-baseline gap-1 whitespace-nowrap">
-                      {item.from && (
-                        <span className="text-[8px] font-medium uppercase tracking-[0.1em] text-oc-ink-900/35">
-                          From
+                      {item.note && (
+                        <span className="pl-5 text-[10px] leading-4 text-oc-ink-900/40">
+                          {item.note}
                         </span>
                       )}
+                    </span>
+
+                    <span className="flex shrink-0 flex-col items-end gap-1 whitespace-nowrap">
                       {item.price ? (
-                        <span className="font-[family-name:var(--font-display)] text-sm font-semibold text-oc-maroon-800">
-                          ${item.price}
-                        </span>
+                        <>
+                          {item.from && (
+                            <span className="text-[8px] font-medium uppercase tracking-[0.1em] text-oc-ink-900/35">
+                              From
+                            </span>
+                          )}
+
+                          <span className="flex items-baseline gap-1.5">
+                            {item.originalPrice && (
+                              <span className="text-[10px] font-medium text-oc-ink-900/30 line-through">
+                                ${item.originalPrice}
+                              </span>
+                            )}
+
+                            <span className="font-[family-name:var(--font-display)] text-sm font-semibold text-oc-maroon-800">
+                              ${item.price}
+                            </span>
+                          </span>
+
+                          {item.originalPrice && (
+                            <span
+                              className="
+                                inline-flex
+                                items-center
+                                gap-0.5
+                                rounded-full
+                                bg-oc-gold-500/15
+                                px-1.5
+                                py-[1px]
+                                text-[7px]
+                                font-bold
+                                uppercase
+                                tracking-[0.08em]
+                                text-oc-maroon-700
+                              "
+                            >
+                              <BadgePercent
+                                className="size-2.5"
+                                strokeWidth={2}
+                                aria-hidden="true"
+                              />
+                              Save {SALON_DISCOUNT_PERCENT}%
+                            </span>
+                          )}
+                        </>
                       ) : (
                         <span className="text-[11px] font-medium text-oc-ink-900/40">
                           Ask in-shop

@@ -145,12 +145,7 @@ const GALLERY_ITEMS: GalleryItem[] = [
     title: "Precision, Comb In Hand",
     category: "craft",
   },
-  {
-    src: shot2.src,
-    alt: "Open Chair barbershop craft in motion",
-    title: "Precision at Work",
-    category: "craft",
-  },
+ 
   {
     src: shot1.src,
     alt: "Open Chair barbershop styling session",
