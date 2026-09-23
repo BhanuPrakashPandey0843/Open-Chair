@@ -27,7 +27,7 @@ import saleemPortrait from "@/assets/baarber/SALEEM AKTHAR.png";
 import anmolPortrait from "@/assets/baarber/Barber Anmol.jpeg";
 import husseinPortrait from "@/assets/baarber/Barber Hussien.jpeg";
 // TODO: swap for a proper Megan portrait once one is added to assets/baarber.
-import meganPortrait from "@/assets/baarber/megan awarm.jpeg";
+import meganPortrait from "@/assets/baarber/Megan Profile Pic.png";
 
 /* =============================================================
    CONSTANTS
