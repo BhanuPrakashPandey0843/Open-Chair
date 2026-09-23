@@ -192,11 +192,7 @@ export function Hero() {
               sm:text-sm
             "
           >
-            For grooming is much more than just tending to the
-            skin, and nails, and hair. It is time you spend on
-            yourself to honour who you are. We recognize the
-            value of the trust you place in the Chair, and that
-            is the purpose Open Chair strives to uphold.
+        Grooming is time you spend on yourself. We recognize the value of the trust you place in the Chair, and that is the purpose we strive to uphold.
           </motion.p>
 
           {/* =====================================================
