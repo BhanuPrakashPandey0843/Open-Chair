@@ -231,8 +231,8 @@ export function About() {
             In many cultures, salon time is{" "}
             <span className="italic text-sapphire">
               ME time
-            </span>{" "}
-        .
+            </span>
+            .
           </h2>
         </motion.div>
 
@@ -715,3 +715,7 @@ export function About() {
     </section>
   );
 }
+
+
+
+

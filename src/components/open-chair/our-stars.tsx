@@ -1,6 +1,13 @@
 "use client";
 
-import { useEffect, useId, useRef, useState, type ReactNode } from "react";
+import {
+  useEffect,
+  useId,
+  useRef,
+  useState,
+  type CSSProperties,
+  type ReactNode,
+} from "react";
 import Image, { type StaticImageData } from "next/image";
 import {
   AnimatePresence,
@@ -22,7 +29,7 @@ import {
   Sparkles,
 } from "lucide-react";
 
-import naveedPortrait from "@/assets/baarber/Danny Pasha.jpeg";
+import dannyPortrait from "@/assets/baarber/Danny Pasha.jpeg";
 import saleemPortrait from "@/assets/baarber/SALEEM AKTHAR.png";
 import anmolPortrait from "@/assets/baarber/Barber Anmol.jpeg";
 import husseinPortrait from "@/assets/baarber/Barber Hussien.jpeg";
@@ -70,7 +77,7 @@ type TeamMember = {
 const FOUNDERS: readonly [Founder, Founder] = [
   {
     name: "Danny Pasha",
-    image: naveedPortrait,
+    image: dannyPortrait,
     objectPosition: "50% 40%",
   },
   {
@@ -333,7 +340,7 @@ function SectionHeader() {
         id="stars-heading"
         className={`${DISPLAY} mt-4 text-4xl font-medium leading-[1.05] tracking-[-0.03em] sm:text-5xl`}
       >
-        Our <ShineSweep className="italic text-foil">Stars</ShineSweep>
+        Our <ShineSweep className="italic text-foil"> Founders</ShineSweep>
       </h2>
 
       <p className="mt-4 max-w-lg text-[13px] leading-6 text-oc-cream-50/55 sm:text-sm">
@@ -605,14 +612,12 @@ function TeamPanel({ member, index, active, stageId, onActivate }: TeamPanelProp
           placeholder="blur"
           style={{
             objectPosition: member.objectPosition,
+            transformOrigin: member.objectPosition,
             ...(member.zoom
-              ? {
-                  transform: `scale(${member.zoom})`,
-                  transformOrigin: member.objectPosition,
-                }
+              ? ({ "--member-zoom": member.zoom } as CSSProperties)
               : null),
           }}
-          className="object-cover transition-[filter,scale] duration-[1200ms] ease-out motion-reduce:transition-none lg:scale-[1.1] lg:[filter:grayscale(1)_contrast(1.05)_brightness(0.8)] lg:group-data-[active=true]/panel:scale-100 lg:group-data-[active=true]/panel:[filter:none]"
+          className="object-cover scale-[var(--member-zoom,1)] transition-[filter,scale] duration-[1200ms] ease-out motion-reduce:transition-none lg:scale-[calc(1.1*var(--member-zoom,1))] lg:[filter:grayscale(1)_contrast(1.05)_brightness(0.8)] lg:group-data-[active=true]/panel:scale-[var(--member-zoom,1)] lg:group-data-[active=true]/panel:[filter:none]"
         />
 
         {/* Depth gradient */}
@@ -799,7 +804,7 @@ function TeamShowcase() {
           <h2
             className={`${DISPLAY} mt-4 text-3xl font-medium leading-[1.08] tracking-[-0.03em] sm:text-4xl`}
           >
-            Behind every <ShineSweep className="italic text-foil">chair</ShineSweep>
+           Our <ShineSweep className="italic text-foil">Stars</ShineSweep>
           </h2>
 
           <p className="mt-4 max-w-lg text-[13px] leading-6 text-oc-cream-50/55 sm:text-sm">

@@ -40,27 +40,6 @@ function FacebookIcon(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-/**
- * TikTok mark drawn in the same stroke-based, lucide-matching style as
- * the icons above (lucide-react ships no official brand icon for TikTok).
- */
-function TikTokIcon(props: SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={1.75}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      {...props}
-    >
-      <path d="M15.5 3v10.8a3.7 3.7 0 1 1-3-3.63" />
-      <path d="M15.5 3.4a5.1 5.1 0 0 0 4.5 4.5" />
-    </svg>
-  );
-}
-
 const QUICK_LINKS = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
@@ -88,11 +67,6 @@ const SOCIALS = [
     label: "Facebook",
     href: "https://www.facebook.com/people/OpenChair-Barbershop/61591085387122/",
     icon: FacebookIcon,
-  },
-  {
-    label: "TikTok",
-    href: "https://www.tiktok.com/in/about",
-    icon: TikTokIcon,
   },
 ];
 

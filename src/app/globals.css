@@ -195,12 +195,18 @@
 
 @layer utilities {
   /* ---- Premium finishes: champagne foil + sapphire ---- */
+  /* Gradient text is painted only inside its own box, and italic glyphs
+     (plus negative letter-spacing) overhang that box — which clipped the
+     right edge of the last letter (the "folded" N in COME IN). The padding
+     enlarges the paint area; the equal negative margin keeps layout unchanged. */
   .text-foil {
     background-image: linear-gradient(180deg, #fbf0dc 0%, #ead5ac 36%, #c89f5e 76%, #a47b3d 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
     -webkit-text-fill-color: transparent;
+    padding-inline: 0.08em 0.18em;
+    margin-inline: -0.08em -0.18em;
   }
 
   .text-sapphire {
@@ -209,6 +215,8 @@
     background-clip: text;
     color: transparent;
     -webkit-text-fill-color: transparent;
+    padding-inline: 0.08em 0.18em;
+    margin-inline: -0.08em -0.18em;
   }
 
   .bg-foil {

@@ -48,7 +48,7 @@ export function Navbar() {
           : "border-b border-white/0 bg-transparent"}
       `}
     >
-      <nav className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between px-6 sm:h-[76px] sm:px-10 lg:px-10">
+      <nav className="mx-auto flex h-[72px] w-full max-w-7xl items-center justify-between px-6 sm:h-[92px] sm:px-10 lg:px-10">
         {/* =====================================================
             BRAND
         ===================================================== */}
@@ -61,23 +61,24 @@ export function Navbar() {
             ${isSolid ? "text-oc-ink-900" : "text-white"}
           `}
         >
-          <span className="relative flex size-10 shrink-0 items-center justify-center overflow-hidden rounded-full bg-oc-cream-50/95 p-0.5 shadow-sm transition-transform duration-500 group-hover/brand:scale-[1.04] sm:size-12">
+          <span className="relative flex size-12 shrink-0 items-center justify-center overflow-hidden rounded-full bg-oc-cream-50/95 p-0.5 shadow-sm transition-transform duration-500 group-hover/brand:scale-[1.04] sm:size-14">
             <Image
               src={logo}
               alt="Open Chair Barbershop & Salon"
               fill
-              sizes="(min-width: 640px) 48px, 40px"
+              sizes="(min-width: 640px) 56px, 48px"
               className="object-contain"
               priority
             />
           </span>
 
-          <span className="font-[family-name:var(--font-display)] text-lg font-medium tracking-[-0.02em] sm:text-xl">
+          <span className="font-[family-name:var(--font-display)] text-xl font-medium tracking-[-0.02em] sm:text-2xl">
             Open Chair
             <span
               className={`
                 block
-                text-[8px]
+                text-[9px]
+                sm:text-[10px]
                 font-semibold
                 uppercase
                 tracking-[0.22em]
@@ -95,7 +96,7 @@ export function Navbar() {
         ===================================================== */}
         <ul
           className={`
-            hidden items-center gap-9 lg:flex
+            hidden items-center gap-5 lg:flex xl:gap-8
             transition-colors duration-300
           `}
         >
@@ -104,7 +105,7 @@ export function Navbar() {
               <a
                 href={link.href}
                 className={`
-                  relative text-[11px] font-semibold uppercase tracking-[0.14em]
+                  relative text-[12px] font-semibold uppercase tracking-[0.14em] xl:text-[13px]
                   transition-colors duration-300
                   ${isSolid
                     ? "text-oc-ink-900/60 hover:text-oc-maroon-800"
@@ -127,8 +128,8 @@ export function Navbar() {
           whileHover={{ y: -2 }}
           whileTap={{ scale: 0.97 }}
           className={`
-            group hidden h-10 items-center gap-2.5 rounded-full px-5
-            text-[10px] font-semibold uppercase tracking-[0.12em]
+            group hidden h-11 items-center gap-2.5 rounded-full px-6
+            text-[11px] font-semibold uppercase tracking-[0.12em] xl:text-[12px]
             transition-all duration-300 lg:inline-flex
             ${isSolid
               ? "bg-sapphire text-oc-cream-50"
@@ -137,7 +138,7 @@ export function Navbar() {
         >
           BOOK NOW
           <ArrowRight
-            className="size-3 transition-transform duration-300 group-hover:translate-x-0.5"
+            className="size-3.5 transition-transform duration-300 group-hover:translate-x-0.5"
             strokeWidth={1.8}
             aria-hidden="true"
           />
@@ -152,7 +153,7 @@ export function Navbar() {
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileOpen}
           className={`
-            flex size-10 items-center justify-center rounded-full border
+            flex size-11 items-center justify-center rounded-full border
             transition-colors duration-300 lg:hidden
             ${isSolid
               ? "border-oc-maroon-900/15 text-oc-ink-900"
@@ -160,9 +161,9 @@ export function Navbar() {
           `}
         >
           {mobileOpen ? (
-            <X className="size-4" strokeWidth={1.75} aria-hidden="true" />
+            <X className="size-5" strokeWidth={1.75} aria-hidden="true" />
           ) : (
-            <Menu className="size-4" strokeWidth={1.75} aria-hidden="true" />
+            <Menu className="size-5" strokeWidth={1.75} aria-hidden="true" />
           )}
         </button>
       </nav>
@@ -185,7 +186,7 @@ export function Navbar() {
                   <a
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
-                    className="block rounded-lg px-2 py-3 text-sm font-medium text-oc-ink-900/75 transition-colors hover:bg-oc-maroon-900/[0.04] hover:text-oc-maroon-800"
+                    className="block rounded-lg px-2 py-3 text-base font-medium text-oc-ink-900/75 transition-colors hover:bg-oc-maroon-900/[0.04] hover:text-oc-maroon-800"
                   >
                     {link.label}
                   </a>
@@ -199,10 +200,10 @@ export function Navbar() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setMobileOpen(false)}
-                className="flex h-11 w-full items-center justify-center gap-2.5 rounded-full bg-sapphire text-[11px] font-semibold uppercase tracking-[0.12em] text-oc-cream-50"
+                className="flex h-12 w-full items-center justify-center gap-2.5 rounded-full bg-sapphire text-[12px] font-semibold uppercase tracking-[0.12em] text-oc-cream-50"
               >
                 BOOK NOW
-                <ArrowRight className="size-3" strokeWidth={1.8} aria-hidden="true" />
+                <ArrowRight className="size-3.5" strokeWidth={1.8} aria-hidden="true" />
               </a>
             </div>
           </motion.div>

@@ -337,7 +337,7 @@ function MarqueeRow({
         className={`flex w-max gap-3.5 xs:gap-4 sm:gap-5 ${
           direction === "left" ? "animate-marquee-left" : "animate-marquee-right"
         }`}
-        style={{ animationPlayState: paused ? "paused" : undefined }}
+        style={{ animationPlayState: paused ? "paused" : "running" }}
       >
         {track.map((testimonial, i) => (
           <MarqueeCard

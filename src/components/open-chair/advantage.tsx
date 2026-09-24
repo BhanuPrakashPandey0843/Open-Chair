@@ -1,14 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import {
-  BadgeCheck,
-  Clock,
-  Home,
-  ShieldCheck,
-  Sparkles,
-  Users,
-} from "lucide-react";
+import { ShieldCheck, Sparkles, Users } from "lucide-react";
 
 type Advantage = {
   icon: typeof Sparkles;

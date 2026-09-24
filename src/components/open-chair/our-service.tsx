@@ -15,11 +15,10 @@ import {
   Sparkles,
 } from "lucide-react";
 
-import shot1 from "@/assets/IMG_20260903_204142.jpg.jpeg";
 import haircutPhoto from "@/assets/news/ones.jpeg";
-import husseinPortrait from "@/assets/baarber/Barber Hussien.jpeg";
-import anmolPortrait from "@/assets/baarber/Barber Anmol.jpeg";
-import meganPortrait from "@/assets/baarber/Megan Profile Pic.png";
+import haircutAndBeardPhoto from "@/assets/IMG_20260903_204336.jpg.jpeg";
+import seniorHaircutPhoto from "@/assets/Picture 3.jpeg";
+import kidsHaircutPhoto from "@/assets/news/Kids 1.jpeg";
 
 /* =============================================================
    REAL MENU DATA — sourced from the printed Barbershop / Salon
@@ -31,13 +30,11 @@ type FeaturedService = {
   description: string;
   price: string;
   image: StaticImageData;
+  /** Descriptive alt text for the card photo. */
+  imageAlt: string;
   imagePosition?: string;
   icon: typeof Sparkles;
-  tag: "Barbershop" | "Salon";
   featured?: boolean;
-  /** First name of the barber/stylist shown performing this service. */
-  stylist?: string;
-  stylistImage?: StaticImageData;
 };
 
 const FEATURED_SERVICES: FeaturedService[] = [
@@ -47,45 +44,40 @@ const FEATURED_SERVICES: FeaturedService[] = [
       "A precision cut, shaped and finished exactly the way you like it — the Open Chair everyday essential.",
     price: "25",
     image: haircutPhoto,
+    imageAlt: "A barber giving a client a precision haircut at Open Chair",
     imagePosition: "50% 14%",
     icon: Scissors,
-    tag: "Barbershop",
-    stylist: "Hussein",
-    stylistImage: husseinPortrait,
   },
   {
     title: "Haircut & Beard Trim",
     description:
       "A clean cut paired with a sharp beard shape-up — the classic Open Chair combo.",
     price: "40",
-    image: anmolPortrait,
-    imagePosition: "50% 11%",
+    image: haircutAndBeardPhoto,
+    imageAlt: "A barber tending to a client's face and beard with a steaming towel at Open Chair",
+    imagePosition: "50% 35%",
     icon: Flame,
-    tag: "Barbershop",
     featured: true,
-    stylist: "Anmol",
-    stylistImage: anmolPortrait,
   },
   {
     title: "Senior Haircut",
     description:
       "An unhurried, comfortable cut for our senior clients, handled with a patient, steady hand.",
     price: "20",
-    image: meganPortrait,
-    imagePosition: "50% 20%",
+    image: seniorHaircutPhoto,
+    imageAlt: "A stylist cutting a senior client's hair at Open Chair",
+    imagePosition: "50% 55%",
     icon: Crown,
-    tag: "Barbershop",
-    stylist: "Megan",
-    stylistImage: meganPortrait,
   },
   {
     title: "Kids' Haircut",
     description:
       "A quick, friendly cut for our youngest clients, aged 12 and under — patient, gentle, fuss-free.",
     price: "20",
-    image: shot1,
+    image: kidsHaircutPhoto,
+    imageAlt: "A young boy in a colourful cape, ready for his haircut at Open Chair",
+    imagePosition: "50% 80%",
     icon: Baby,
-    tag: "Barbershop",
   },
 ];
 
@@ -496,11 +488,7 @@ export function Services() {
                 <div className="relative aspect-[1.05/1] overflow-hidden sm:aspect-[1.1/1]">
                   <Image
                     src={service.image}
-                    alt={
-                      service.stylist
-                        ? `${service.stylist} performing the ${service.title} service at Open Chair`
-                        : service.title
-                    }
+                    alt={service.imageAlt}
                     fill
                     priority={index < 2}
                     sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
@@ -551,31 +539,6 @@ export function Services() {
                     "
                   />
 
-                  {/* Category */}
-                  <div
-                    className="
-                      absolute
-                      left-4
-                      top-4
-                      flex
-                      items-center
-                      gap-2
-                      rounded-full
-                      border
-                      border-white/25
-                      bg-black/10
-                      px-3
-                      py-1.5
-                      backdrop-blur-md
-                    "
-                  >
-                    <span className="size-1.5 rounded-full bg-oc-gold-300" />
-
-                    <span className="text-[8px] font-semibold uppercase tracking-[0.18em] text-white/85">
-                      {service.tag}
-                    </span>
-                  </div>
-
                   {/* Icon */}
                   <motion.div
                     className="
@@ -609,69 +572,6 @@ export function Services() {
                     />
                   </motion.div>
 
-                  {/* Stylist chip — who performs this service */}
-                  {service.stylist && service.stylistImage && (
-                    <div
-                      className="
-                        absolute
-                        bottom-4
-                        left-4
-                        flex
-                        items-center
-                        gap-2
-                        rounded-full
-                        border
-                        border-white/25
-                        bg-black/20
-                        py-1
-                        pl-1
-                        pr-3
-                        backdrop-blur-md
-                        transition-all
-                        duration-500
-                        group-hover/card:border-oc-gold-300/55
-                        group-hover/card:bg-black/35
-                      "
-                    >
-                      <span className="relative size-6 shrink-0 overflow-hidden rounded-full border border-white/40">
-                        <Image
-                          src={service.stylistImage}
-                          alt=""
-                          aria-hidden="true"
-                          fill
-                          sizes="24px"
-                          className="object-cover"
-                        />
-                      </span>
-
-                      <span className="text-[8px] font-semibold uppercase tracking-[0.15em] text-white/90">
-                        With {service.stylist}
-                      </span>
-                    </div>
-                  )}
-
-                  {/* Featured badge */}
-                  {service.featured && (
-                    <div
-                      className="
-                        absolute
-                        bottom-4
-                        right-4
-                        rounded-full
-                        bg-oc-clay-500
-                        px-3
-                        py-1.5
-                        text-[8px]
-                        font-bold
-                        uppercase
-                        tracking-[0.15em]
-                        text-oc-cream-50
-                        shadow-lg
-                      "
-                    >
-                      Most Loved
-                    </div>
-                  )}
                 </div>
 
                 {/* =================================================
