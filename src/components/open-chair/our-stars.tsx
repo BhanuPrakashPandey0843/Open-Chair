@@ -287,7 +287,7 @@ function Background({ animated }: { animated: boolean }) {
   return (
     <div aria-hidden="true" className="pointer-events-none absolute inset-0">
       {/* Top spotlight */}
-      <div className="absolute inset-0 bg-[radial-gradient(60%_38%_at_50%_0%,rgba(74,106,154,0.34),transparent)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(60%_38%_at_50%_0%,rgba(176,138,78,0.28),transparent)]" />
 
       {/* Fine dot texture */}
       <div
@@ -863,7 +863,7 @@ export function OurStars() {
       <section
         id="stars"
         aria-labelledby="stars-heading"
-        className="relative isolate overflow-hidden border-y border-oc-gold-300/15 bg-[linear-gradient(180deg,#0d2140_0%,#0a1a33_55%,#0d1522_100%)] px-6 py-24 text-oc-cream-50 sm:px-10 sm:py-28 lg:py-32"
+        className="relative isolate overflow-hidden border-y border-oc-gold-300/15 bg-[linear-gradient(180deg,#26190f_0%,#1e130c_55%,#160e09_100%)] px-6 py-24 text-oc-cream-50 sm:px-10 sm:py-28 lg:py-32"
       >
         <Background animated={!reduceMotion} />
 

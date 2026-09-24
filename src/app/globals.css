@@ -15,6 +15,7 @@
   --color-oc-maroon-900: var(--oc-maroon-900);
   --color-oc-maroon-800: var(--oc-maroon-800);
   --color-oc-maroon-700: var(--oc-maroon-700);
+  --color-oc-clay-500: var(--oc-clay-500);
   --color-oc-gold-600: var(--oc-gold-600);
   --color-oc-gold-500: var(--oc-gold-500);
   --color-oc-gold-300: var(--oc-gold-300);
@@ -61,29 +62,29 @@
 }
 
 :root {
-  /* Open Chair brand palette — client blue & charcoal scheme.
-     Token names are kept from the previous theme so every component
-     picks up the new colours automatically:
-       oc-maroon-*  -> navy / blue family  (950 deepest ... 700 lightest)
-       oc-gold-*    -> champagne-metal accent (the ONLY colour outside the client's
-                       five). To revert to pure silver/blue, set 600 #3d5d8d,
-                       500 #4a6a9a, 300 #d9d9d9, 200 #bfd1ea and switch the
-                       .text-foil / .bg-foil gradients below to silver.
-       oc-cream-50  -> warm pearl page background
-       oc-mist-100  -> warm greige alternate section background
-       oc-ink-900   -> charcoal
+  /* Open Chair brand palette v2 — warm luxury neutrals: espresso &
+     antique-brass on soft cream, with a quiet terracotta accent.
+     Token names are kept stable so every component picks up the new
+     colours automatically:
+       oc-maroon-*  -> espresso / warm-umber family (950 deepest ... 700 lightest)
+       oc-gold-*    -> antique brass / champagne accent
+       oc-clay-500  -> quiet terracotta — used sparingly for personality
+       oc-cream-50  -> soft cream page background
+       oc-mist-100  -> beige-mist alternate section background
+       oc-ink-900   -> warm charcoal (ink, not cool grey)
   */
-  --oc-maroon-950: #0f1e33; /* deep navy (darkest shade of Primary Blue) */
-  --oc-maroon-900: #1e3a5f; /* Primary Blue   */
-  --oc-maroon-800: #2f4f78; /* Secondary Blue */
-  --oc-maroon-700: #4a6a9a; /* Light Blue     */
-  --oc-gold-600: #7a5c26;   /* bronze — eyebrows & accents on light   */
-  --oc-gold-500: #b8934f;   /* champagne — stars, ticks, hairlines     */
-  --oc-gold-300: #d8c294;   /* light champagne — accent on dark        */
-  --oc-gold-200: #efe0bb;   /* pale champagne — hovers & highlights    */
-  --oc-cream-50: #f8f6f1;   /* warm pearl page background                */
-  --oc-mist-100: #ece9e1;   /* warm greige alternate section         */
-  --oc-ink-900: #2b2b2b;    /* Charcoal */
+  --oc-maroon-950: #1a130f; /* espresso black — deepest dark bg */
+  --oc-maroon-900: #2e2015; /* espresso — primary dark, CTAs, brand ink */
+  --oc-maroon-800: #4a3324; /* umber — secondary dark, price/link text */
+  --oc-maroon-700: #7c5b3e; /* bronze-taupe — light dark, borders, mid accents */
+  --oc-gold-600: #8a6534;   /* antique brass — eyebrows & accents on light   */
+  --oc-gold-500: #b08a4e;   /* warm brass gold — stars, ticks, hairlines     */
+  --oc-gold-300: #d9bd8a;   /* champagne — accent on dark        */
+  --oc-gold-200: #eedfc2;   /* pale champagne — hovers & highlights    */
+  --oc-clay-500: #b1603c;   /* quiet terracotta — sparing personality accent */
+  --oc-cream-50: #faf8f5;   /* soft cream page background                */
+  --oc-mist-100: #f1eae2;   /* beige mist alternate section         */
+  --oc-ink-900: #2a2118;    /* warm charcoal */
 
   --background: var(--oc-cream-50);
   --foreground: var(--oc-ink-900);
@@ -96,12 +97,12 @@
   --secondary: var(--oc-mist-100);
   --secondary-foreground: var(--oc-maroon-900);
   --muted: var(--oc-mist-100);
-  --muted-foreground: #5f6b7d;
+  --muted-foreground: #7a6f62;
   --accent: var(--oc-mist-100);
   --accent-foreground: var(--oc-maroon-900);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: #d9d9d9;
-  --input: #d9d9d9;
+  --border: #e3d8cb;
+  --input: #e3d8cb;
   --ring: var(--oc-maroon-700);
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
@@ -195,7 +196,7 @@
 @layer utilities {
   /* ---- Premium finishes: champagne foil + sapphire ---- */
   .text-foil {
-    background-image: linear-gradient(180deg, #fff8e6 0%, #efdcae 36%, #cfae6c 76%, #ad8949 100%);
+    background-image: linear-gradient(180deg, #fbf0dc 0%, #ead5ac 36%, #c89f5e 76%, #a47b3d 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -203,7 +204,7 @@
   }
 
   .text-sapphire {
-    background-image: linear-gradient(180deg, #5c7db0 0%, #2f4f78 55%, #1e3a5f 100%);
+    background-image: linear-gradient(180deg, #8a6a4b 0%, #4a3324 55%, #2e2015 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -211,19 +212,19 @@
   }
 
   .bg-foil {
-    background-color: #d5b878;
-    background-image: linear-gradient(180deg, #f8ebc8 0%, #e2ca92 50%, #c4a15f 100%);
+    background-color: #c9a265;
+    background-image: linear-gradient(180deg, #f2deb6 0%, #dcbd86 50%, #b98f52 100%);
   }
   .bg-foil:hover {
-    background-image: linear-gradient(180deg, #fff4d6 0%, #eed8a3 50%, #d3b273 100%);
+    background-image: linear-gradient(180deg, #fce9c4 0%, #e6c793 50%, #c49f5e 100%);
   }
 
   .bg-sapphire {
-    background-color: #2f4f78;
-    background-image: linear-gradient(180deg, #42669a 0%, #2f4f78 55%, #27436a 100%);
+    background-color: #4a3324;
+    background-image: linear-gradient(180deg, #5e4530 0%, #4a3324 55%, #3a2819 100%);
   }
   .bg-sapphire:hover {
-    background-image: linear-gradient(180deg, #5578ad 0%, #3d6193 55%, #2f4f78 100%);
+    background-image: linear-gradient(180deg, #74593f 0%, #5a4330 55%, #4a3324 100%);
   }
 
   .animate-marquee-left {

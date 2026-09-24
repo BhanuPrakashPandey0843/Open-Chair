@@ -100,7 +100,7 @@ const CURRENT_YEAR = new Date().getFullYear();
 
 export function Footer() {
   return (
-    <footer className="group relative isolate overflow-hidden bg-[linear-gradient(180deg,#2b2b2b_0%,#1b1e25_100%)] text-oc-cream-50">
+    <footer className="group relative isolate overflow-hidden bg-[linear-gradient(180deg,#2a2118_0%,#1a130f_100%)] text-oc-cream-50">
       {/* =========================================================
           Ambient background
       ========================================================= */}
@@ -212,7 +212,7 @@ export function Footer() {
                   p-[3px]
                   transition-all duration-500
                   group-hover/brand:border-oc-gold-200/50
-                  group-hover/brand:shadow-[0_0_30px_rgba(191,209,234,0.22)]
+                  group-hover/brand:shadow-[0_0_30px_rgba(217,189,138,0.24)]
                 "
               >
                 <Image
@@ -492,7 +492,7 @@ export function Footer() {
                 hover:-translate-y-0.5
                 hover:border-oc-gold-200/50
                 hover:bg-oc-gold-200/[0.12]
-                hover:shadow-[0_10px_35px_rgba(191,209,234,0.10)]
+                hover:shadow-[0_10px_35px_rgba(217,189,138,0.14)]
               "
             >
               Book Now

@@ -58,9 +58,9 @@ export function Hero() {
           inset-0
           -z-10
           bg-gradient-to-r
-          from-[#0f1e33]/95
-          via-[#13284a]/65
-          to-[#0b1726]/25
+          from-[#1a130f]/95
+          via-[#241a12]/65
+          to-[#140e0a]/25
         "
       />
 
@@ -70,7 +70,7 @@ export function Hero() {
           absolute
           inset-0
           -z-10
-          bg-[#0f1e33]/25
+          bg-[#1a130f]/25
           lg:hidden
         "
       />
@@ -84,7 +84,7 @@ export function Hero() {
           -z-10
           h-48
           bg-gradient-to-t
-          from-[#070f1a]/50
+          from-[#0f0a07]/50
           to-transparent
         "
       />
@@ -114,10 +114,10 @@ export function Hero() {
           CONTENT
       ========================================================= */}
 
-      {/* Atmospheric light: cool sapphire bloom behind the heading, faint champagne glow bottom-right */}
+      {/* Atmospheric light: warm brass bloom behind the heading, faint champagne glow bottom-right */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(55%_60%_at_18%_45%,rgba(74,106,154,0.38),transparent_70%),radial-gradient(35%_40%_at_85%_88%,rgba(216,194,148,0.16),transparent)]"
+        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(55%_60%_at_18%_45%,rgba(176,138,78,0.30),transparent_70%),radial-gradient(35%_40%_at_85%_88%,rgba(217,189,138,0.18),transparent)]"
       />
 
       <div className="relative mx-auto flex min-h-[720px] w-full max-w-7xl items-center px-6 pb-20 pt-28 sm:min-h-[780px] sm:px-10 sm:pb-24 sm:pt-32 lg:min-h-screen lg:px-10">

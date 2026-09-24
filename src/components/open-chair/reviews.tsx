@@ -163,11 +163,11 @@ function MarqueeCard({
         border-oc-gold-500/30
         bg-white/90
         p-5
-        shadow-[0_2px_8px_rgba(15,30,51,0.05)]
+        shadow-[0_2px_8px_rgba(42,33,24,0.05)]
         backdrop-blur-sm
         transition-shadow
         duration-500
-        hover:shadow-[0_22px_50px_-28px_rgba(15,30,51,0.28)]
+        hover:shadow-[0_22px_50px_-28px_rgba(42,33,24,0.28)]
         xs:w-[280px]
         sm:w-[320px]
         sm:max-w-none
@@ -369,8 +369,8 @@ export function Reviews() {
           className="absolute inset-0 opacity-[0.035]"
           style={{
             backgroundImage: `
-              radial-gradient(circle, rgba(15,30,51,0.7) 0.55px, transparent 0.7px),
-              radial-gradient(circle, rgba(15,30,51,0.45) 0.45px, transparent 0.6px)
+              radial-gradient(circle, rgba(42,33,24,0.7) 0.55px, transparent 0.7px),
+              radial-gradient(circle, rgba(42,33,24,0.45) 0.45px, transparent 0.6px)
             `,
             backgroundPosition: "0 0, 8px 9px",
             backgroundSize: "13px 13px, 17px 17px",

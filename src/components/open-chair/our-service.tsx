@@ -238,7 +238,7 @@ export function Services() {
         isolate
         overflow-hidden
         scroll-mt-24
-        bg-gradient-to-b from-[#fcfbf8] via-[#f8f6f1] to-[#f0ede5]
+        bg-gradient-to-b from-[#fdfbf9] via-[#faf8f5] to-[#f1eae2]
         px-6
         py-24
         text-oc-ink-900
@@ -261,12 +261,12 @@ export function Services() {
             backgroundImage: `
               radial-gradient(
                 circle,
-                rgba(15,30,51,0.65) 0.55px,
+                rgba(42,33,24,0.65) 0.55px,
                 transparent 0.7px
               ),
               radial-gradient(
                 circle,
-                rgba(15,30,51,0.35) 0.45px,
+                rgba(42,33,24,0.35) 0.45px,
                 transparent 0.6px
               )
             `,
@@ -398,7 +398,7 @@ export function Services() {
             href={BOOKING_HREF}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-6 inline-flex items-center gap-2 rounded-full bg-sapphire px-5 py-2.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-oc-cream-50 shadow-[0_10px_24px_rgba(30,58,95,0.16)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_14px_30px_rgba(30,58,95,0.24)] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-oc-gold-500"
+            className="mt-6 inline-flex items-center gap-2 rounded-full bg-sapphire px-5 py-2.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-oc-cream-50 shadow-[0_10px_24px_rgba(46,32,21,0.20)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_14px_30px_rgba(46,32,21,0.28)] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-oc-gold-500"
           >
             Reserve your chair
             <ArrowUpRight className="size-3.5" strokeWidth={1.75} aria-hidden="true" />
@@ -477,11 +477,11 @@ export function Services() {
                   border
                   border-oc-gold-500/25
                   bg-white/90
-                  shadow-[0_3px_12px_rgba(15,30,51,0.05)]
+                  shadow-[0_3px_12px_rgba(42,33,24,0.05)]
                   backdrop-blur-sm
                   transition-shadow
                   duration-500
-                  hover:shadow-[0_28px_65px_-30px_rgba(15,30,51,0.28)]
+                  hover:shadow-[0_28px_65px_-30px_rgba(42,33,24,0.28)]
                   ${
                     service.featured
                       ? "border-oc-gold-500/60 shadow-[0_18px_45px_-24px_rgba(184,147,79,0.55)] lg:-translate-y-5"
@@ -658,14 +658,14 @@ export function Services() {
                         bottom-4
                         right-4
                         rounded-full
-                        bg-oc-gold-300
+                        bg-oc-clay-500
                         px-3
                         py-1.5
                         text-[8px]
                         font-bold
                         uppercase
                         tracking-[0.15em]
-                        text-oc-maroon-900
+                        text-oc-cream-50
                         shadow-lg
                       "
                     >
@@ -744,7 +744,7 @@ export function Services() {
                         hover:-translate-y-0.5
                         hover:border-oc-gold-500/55
                         hover:bg-oc-gold-500/[0.10]
-                        hover:shadow-[0_8px_22px_rgba(74,106,154,0.18)]
+                        hover:shadow-[0_8px_22px_rgba(176,138,78,0.22)]
                         focus-visible:outline-2
                         focus-visible:outline-offset-2
                         focus-visible:outline-oc-gold-500
@@ -852,7 +852,7 @@ export function Services() {
               border-oc-gold-500/35
               bg-white/70
               p-1.5
-              shadow-[0_3px_12px_rgba(15,30,51,0.06)]
+              shadow-[0_3px_12px_rgba(42,33,24,0.06)]
               backdrop-blur-sm
             "
           >
@@ -969,7 +969,7 @@ export function Services() {
                 border-oc-gold-500/30
                 bg-white/90
                 p-4 sm:p-6
-                shadow-[0_3px_12px_rgba(15,30,51,0.05)]
+                shadow-[0_3px_12px_rgba(42,33,24,0.05)]
                 backdrop-blur-sm
                 ${groups.length === 1 ? "sm:col-span-2" : ""}
               `}

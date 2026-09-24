@@ -23,7 +23,7 @@ const BOOKING_HREF = "https://openchairbarbershopchatham.setmore.com/book";
 
 export function CtaBooking() {
   return (
-    <section id="contact" className="relative bg-[linear-gradient(135deg,#0f1e33_0%,#1e3a5f_42%,#2f4f78_100%)] text-oc-cream-50">
+    <section id="contact" className="relative bg-[linear-gradient(135deg,#1a130f_0%,#2e2015_42%,#4a3324_100%)] text-oc-cream-50">
       {/* ambient dot texture, echoes woven cape fabric */}
       <div
         aria-hidden="true"
@@ -35,10 +35,10 @@ export function CtaBooking() {
         }}
       />
 
-      {/* soft light-blue bloom in the top-right corner */}
+      {/* soft warm-brass bloom in the top-right corner */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(55%_80%_at_88%_8%,rgba(191,209,234,0.22),transparent)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(55%_80%_at_88%_8%,rgba(217,189,138,0.20),transparent)]"
       />
 
       <div className="relative mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-12 px-6 py-20 sm:px-10 sm:py-28 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16 lg:py-32">
@@ -119,7 +119,7 @@ export function CtaBooking() {
             rel="noopener noreferrer"
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.98 }}
-            className="group mt-8 flex h-12 w-full items-center justify-center gap-2 rounded-full bg-sapphire px-5 text-sm font-semibold text-oc-cream-50 shadow-[0_12px_26px_-12px_rgba(15,30,51,0.65)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-oc-gold-500"
+            className="group mt-8 flex h-12 w-full items-center justify-center gap-2 rounded-full bg-sapphire px-5 text-sm font-semibold text-oc-cream-50 shadow-[0_12px_26px_-12px_rgba(42,33,24,0.65)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-oc-gold-500"
           >
             <CalendarCheck className="size-4" strokeWidth={2} aria-hidden="true" />
             Book Now

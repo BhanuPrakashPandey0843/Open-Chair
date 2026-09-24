@@ -56,7 +56,7 @@ export function About() {
         relative
         isolate
         overflow-hidden
-        bg-gradient-to-b from-[#fcfbf8] via-[#f8f6f1] to-[#f0ede5]
+        bg-gradient-to-b from-[#fdfbf9] via-[#faf8f5] to-[#f1eae2]
         px-6
         py-20
         text-oc-ink-900
@@ -80,12 +80,12 @@ export function About() {
             backgroundImage: `
               radial-gradient(
                 circle,
-                rgba(15,30,51,0.7) 0.5px,
+                rgba(42,33,24,0.7) 0.5px,
                 transparent 0.7px
               ),
               radial-gradient(
                 circle,
-                rgba(15,30,51,0.3) 0.45px,
+                rgba(42,33,24,0.3) 0.45px,
                 transparent 0.65px
               )
             `,
@@ -494,7 +494,7 @@ export function About() {
                 overflow-hidden
                 rounded-[18px]
                 bg-oc-maroon-900/5
-                shadow-[0_30px_70px_-30px_rgba(15,30,51,0.35)]
+                shadow-[0_30px_70px_-30px_rgba(42,33,24,0.35)]
               "
             >
               {/* Image */}
@@ -575,7 +575,7 @@ export function About() {
                   px-4
                   py-3.5
                   text-white
-                  shadow-[0_15px_35px_-12px_rgba(15,30,51,0.45)]
+                  shadow-[0_15px_35px_-12px_rgba(42,33,24,0.45)]
                   sm:-bottom-2
                   sm:-left-2
                   sm:min-w-[118px]

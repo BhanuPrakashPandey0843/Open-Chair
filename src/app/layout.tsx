@@ -22,9 +22,9 @@ export const metadata: Metadata = {
     "Certified stylists, premium products, unmatched comfort — book your chair at Open Chair.",
 };
 
-// Colours the mobile browser chrome / address bar to match the brand navy.
+// Colours the mobile browser chrome / address bar to match the brand espresso.
 export const viewport: Viewport = {
-  themeColor: "#1e3a5f",
+  themeColor: "#2e2015",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

@@ -47,7 +47,7 @@ export function Advantage() {
         relative
         isolate
         overflow-hidden
-        border-y border-oc-gold-300/15 bg-[linear-gradient(180deg,#0d2140_0%,#0a1a33_55%,#0d1522_100%)]
+        border-y border-oc-gold-300/15 bg-[linear-gradient(180deg,#26190f_0%,#1e130c_55%,#160e09_100%)]
         px-6
         py-24
         text-oc-cream-50
