@@ -35,6 +35,7 @@ import anmolPortrait from "@/assets/baarber/Barber Anmol.jpeg";
 import husseinPortrait from "@/assets/baarber/Barber Hussien.jpeg";
 // TODO: swap for a proper Megan portrait once one is added to assets/baarber.
 import meganPortrait from "@/assets/baarber/Megan Profile Pic.png";
+import danaPortrait from "@/assets/baarber/dana.jpg";
 
 /* =============================================================
    CONSTANTS
@@ -130,6 +131,18 @@ const TEAM: readonly TeamMember[] = [
     image: meganPortrait,
     objectPosition: "39% 37%",
     zoom: 1.25,
+  },
+  {
+    id: "dana",
+    firstName: "Dana",
+    name: "Dana",
+    role: "Stylist",
+    years: 10,
+    yearsLabel: "Years in the hair industry",
+    bio: "With over 10 years of experience in the hair industry, Dana is passionate about helping you look and feel your best. She believes great hair is about more than just a style. It's about confidence, individuality, and finding a look that feels like you. Whether you're looking for a subtle refresh or a whole new look, Dana is excited to help you achieve hair you love!",
+    skills: ["Haircuts", "Style refreshes", "Personalized looks"],
+    image: danaPortrait,
+    objectPosition: "50% 28%",
   },
 ];
 
