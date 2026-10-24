@@ -135,7 +135,7 @@ const TEAM: readonly TeamMember[] = [
   {
     id: "dana",
     firstName: "Dana",
-    name: "Dana",
+    name: "Dana Waddington",
     role: "Stylist",
     years: 10,
     yearsLabel: "Years in the hair industry",
